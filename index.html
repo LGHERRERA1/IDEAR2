@@ -8,20 +8,72 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .zebra-row:nth-child(even) { background-color: rgba(172, 126, 138, 0.1); }
-        .glass-effect { backdrop-filter: blur(10px); }
-        .tech-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        .zebra-row:nth-child(even) { 
+            background-color: rgba(172, 126, 138, 0.1) !important; 
+        }
+        
+        .tech-card:hover { 
+            transform: translateY(-5px); 
+            transition: all 0.3s ease; 
+        }
+
+        /* AJUSTES CRÍTICOS PARA PDF SIN CORTES VISIBLES */
+        @media print {
+            @page {
+                size: auto;
+                margin: 0mm;
+            }
+            
+            html, body {
+                background-color: #ffffff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .max-w-5xl {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            header, main, section, footer, .rounded-t-\[2\.5rem\], .rounded-b-\[2\.5rem\], .rounded-\[2rem\], .rounded-\[3rem\] {
+                border-radius: 0 !important;
+            }
+
+            .print-no-break {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            .bg-\[\#4d3d4a\] { background-color: #4d3d4a !important; }
+            .bg-\[\#e47053\] { background-color: #e47053 !important; }
+            .bg-white { background-color: #ffffff !important; }
+            .bg-gradient-to-r {
+                background: linear-gradient(to right, #e47053, #dc7c60) !important;
+            }
+            
+            .shadow-2xl, .shadow-lg, .shadow-xl {
+                box-shadow: none !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+        }
     </style>
 </head>
 <body class="bg-[#fbc6d6]/20 text-[#4d3d4a] selection:bg-[#e47053]/30 min-h-screen p-2 md:p-8">
 
     <div class="max-w-5xl mx-auto">
-        <!-- Header Estilo Boutique -->
+        <!-- Header -->
         <header class="bg-[#4d3d4a] text-white rounded-t-[2.5rem] p-10 shadow-2xl flex flex-col md:flex-row justify-between items-center border-b-8 border-[#e47053]">
-            <div class="flex items-center gap-5 mb-8 md:mb-0">
-                <div class="bg-[#e47053] p-4 rounded-full shadow-lg transform -rotate-12">
-                    <i data-lucide="building-2" class="text-white w-10 h-10"></i>
+            <div class="flex items-center gap-6 mb-8 md:mb-0">
+                <!-- Espacio para el Logo -->
+                <div class="bg-white p-3 rounded-2xl shadow-xl transform -rotate-3 overflow-hidden flex items-center justify-center">
+                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="Logo IDEAR SERVICIOS" class="h-20 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150?text=IDEAR'">
                 </div>
                 <div>
                     <h1 class="text-4xl font-black tracking-tighter leading-none">
@@ -51,7 +103,7 @@
             </section>
 
             <!-- Matriz de Desviación (Tabla) -->
-            <section class="px-6 md:px-12 pb-16">
+            <section class="print-no-break px-6 md:px-12 pb-16">
                 <div class="bg-[#4d3d4a] rounded-[2rem] shadow-2xl overflow-hidden border-4 border-[#d8adb2]/30">
                     <div class="p-8 bg-gradient-to-r from-[#4d3d4a] to-[#915b6c] border-b border-[#d8adb2]/20 flex items-center gap-5">
                         <div class="p-2 bg-[#efa1b9]/20 rounded-lg">
@@ -74,42 +126,42 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#d8adb2]/10">
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2021</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 908.526</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 908.526</td>
                                     <td class="p-6 text-lg text-right font-black text-[#915b6c]">—</td>
                                     <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">—</td>
                                 </tr>
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2022</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 999.379</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.027.725</td>
                                     <td class="p-6 text-lg text-right font-black text-[#dc7c60]">10,00%</td>
                                     <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">13,12%</td>
                                 </tr>
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2023</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.159.279</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.123.097</td>
                                     <td class="p-6 text-lg text-right font-black text-[#dc7c60]">16,00%</td>
                                     <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">9,28%</td>
                                 </tr>
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2024</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.299.204</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.181.499</td>
                                     <td class="p-6 text-lg text-right font-black text-[#dc7c60]">12,07%</td>
                                     <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">5,20%</td>
                                 </tr>
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2025</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.422.629</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.244.118</td>
                                     <td class="p-6 text-lg text-right font-black text-[#dc7c60]">9,50%</td>
                                     <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">5,30%</td>
                                 </tr>
-                                <tr class="zebra-row transition-all hover:bg-[#efa1b9]/15">
+                                <tr class="zebra-row transition-all">
                                     <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10 text-amber-500">2026</td>
                                     <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.759.792</td>
                                     <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.308.812</td>
@@ -121,7 +173,7 @@
                                     <td class="p-8 text-4xl font-black text-right text-white tracking-tighter">194%</td>
                                     <td class="p-8 text-4xl font-black text-right text-[#4d3d4a] tracking-tighter">144%</td>
                                     <td colspan="2" class="p-8 text-center">
-                                        <div class="bg-white shadow-2xl text-[#dc7c60] px-8 py-3 rounded-2xl text-base font-black inline-flex items-center gap-3 transform hover:scale-105 transition-transform">
+                                        <div class="bg-white shadow-2xl text-[#dc7c60] px-8 py-3 rounded-2xl text-base font-black inline-flex items-center gap-3">
                                             <i data-lucide="zap" class="w-6 h-6 fill-current"></i> BRECHA DEL 50%
                                         </div>
                                     </td>
@@ -132,7 +184,7 @@
                 </div>
             </section>
 
-            <!-- Nueva Sección: Ecosistema Tecnológico -->
+            <!-- Ecosistema Tecnológico -->
             <section class="p-12 bg-[#fbc6d6]/10">
                 <div class="text-center mb-12">
                     <h3 class="text-3xl font-black text-[#4d3d4a] uppercase tracking-widest mb-4">Ecosistema de Seguridad Inteligente</h3>
@@ -140,65 +192,59 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cerco Electrónico e IA -->
-                    <div class="tech-card bg-white p-6 rounded-[2rem] border-2 border-[#a9c1ee]/30 shadow-lg">
+                    <!-- Tarjetas de tecnología -->
+                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#a9c1ee]/30 shadow-lg">
                         <div class="bg-[#a9c1ee]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="scan-eye" class="text-[#4d3d4a] w-8 h-8"></i>
                         </div>
                         <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Perímetros Autónomos</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Cercos electrónicos con <b>Analítica de Video</b>. Distinguen entre mascotas y humanos, activando alertas externas inmediatas sin necesidad de guardias de ronda.</p>
+                        <p class="text-sm text-[#915b6c] leading-relaxed">Cercos electrónicos con <b>Analítica de Video</b> e IA. Activan alertas externas inmediatas sin necesidad de guardias de ronda física.</p>
                     </div>
 
-                    <!-- Portería Virtual -->
-                    <div class="tech-card bg-white p-6 rounded-[2rem] border-2 border-[#efa1b9]/30 shadow-lg">
+                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#efa1b9]/30 shadow-lg">
                         <div class="bg-[#efa1b9]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="headset" class="text-[#4d3d4a] w-8 h-8"></i>
                         </div>
                         <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Portería Remota / Virtual</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Gestión centralizada de accesos mediante intercomunicación IP. Un solo operador gestiona varios puntos de entrada, reduciendo el <b>60% del costo de nómina</b>.</p>
+                        <p class="text-sm text-[#915b6c] leading-relaxed">Gestión centralizada mediante intercomunicación IP. Reduce el <b>60% del costo de nómina</b> al eliminar turnos presenciales.</p>
                     </div>
 
-                    <!-- Biometría -->
-                    <div class="tech-card bg-white p-6 rounded-[2rem] border-2 border-[#dc7c60]/30 shadow-lg">
+                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#dc7c60]/30 shadow-lg">
                         <div class="bg-[#dc7c60]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="fingerprint" class="text-[#4d3d4a] w-8 h-8"></i>
                         </div>
                         <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Acceso Biométrico 4.0</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Reconocimiento facial y QR dinámico para residentes y visitantes. Elimina el error humano y automatiza los libros de ingreso sin intervención física.</p>
+                        <p class="text-sm text-[#915b6c] leading-relaxed">Reconocimiento facial y QR dinámico. Automatiza los libros de ingreso sin intervención humana, eliminando el error humano.</p>
                     </div>
 
-                    <!-- Smart Lockers -->
-                    <div class="tech-card bg-[#4d3d4a] p-6 rounded-[2rem] shadow-xl text-white">
+                    <div class="print-no-break tech-card bg-[#4d3d4a] p-6 rounded-[2rem] shadow-xl text-white">
                         <div class="bg-[#e47053] w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="package-search" class="text-white w-8 h-8"></i>
                         </div>
                         <h4 class="font-black text-[#efa1b9] text-lg uppercase mb-2">Smart Lockers</h4>
-                        <p class="text-sm text-[#d8adb2] leading-relaxed">Casilleros inteligentes para correspondencia. El transportista entrega, el sistema notifica al residente. <b>No requiere personal</b> para custodia de paquetes.</p>
+                        <p class="text-sm text-[#d8adb2] leading-relaxed">Casilleros inteligentes para correspondencia. Autogestión de paquetes que elimina la necesidad de custodia física por personal.</p>
                     </div>
 
-                    <!-- Sensores IOT -->
-                    <div class="tech-card bg-white p-6 rounded-[2rem] border-2 border-[#ac7e8a]/30 shadow-lg">
+                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#ac7e8a]/30 shadow-lg">
                         <div class="bg-[#ac7e8a]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="thermometer-snowflake" class="text-[#4d3d4a] w-8 h-8"></i>
                         </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Monitoreo IOT de Áreas</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Sensores de inundación, humo e intrusión en áreas comunes monitoreados 24/7 de forma externa. Prevención de riesgos sin supervisión humana presencial.</p>
+                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Monitoreo IOT</h4>
+                        <p class="text-sm text-[#915b6c] leading-relaxed">Sensores de inundación, humo e intrusión monitoreados 24/7 de forma externa. Prevención sin supervisión humana presencial.</p>
                     </div>
 
-                    <!-- Monitoreo Externo -->
-                    <div class="tech-card bg-[#a9c1ee]/20 p-6 rounded-[2rem] border-2 border-[#a9c1ee] shadow-lg">
+                    <div class="print-no-break tech-card bg-[#a9c1ee]/20 p-6 rounded-[2rem] border-2 border-[#a9c1ee] shadow-lg">
                         <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
                             <i data-lucide="radio-receiver" class="text-[#4d3d4a] w-8 h-8"></i>
                         </div>
                         <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Central de Respuesta</h4>
-                        <p class="text-sm text-[#4d3d4a] leading-relaxed font-semibold underline">Monitoreo externo profesional</p>
-                        <p class="text-xs text-[#915b6c] mt-1">Soporte inmediato y despacho de autoridades en tiempo real ante cualquier anomalía detectada por los sistemas.</p>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed font-semibold underline text-center">Respuesta Profesional Externa</p>
                     </div>
                 </div>
             </section>
 
             <!-- Diagnóstico Estratégico -->
-            <section class="mx-12 mb-16 p-10 bg-[#dc7c60]/10 border-2 border-[#dc7c60]/30 rounded-[3rem] relative shadow-inner mt-8">
+            <section class="print-no-break mx-12 mb-16 p-10 bg-[#dc7c60]/10 border-2 border-[#dc7c60]/30 rounded-[3rem] relative shadow-inner mt-8">
                 <div class="absolute -top-6 left-12 bg-[#dc7c60] text-white px-8 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
                     Diagnóstico Estratégico
                 </div>
@@ -208,24 +254,24 @@
                     </div>
                     <div>
                         <p class="text-[#4d3d4a] text-xl leading-relaxed font-bold italic">
-                            "La tecnología es la única variable que podemos controlar. Mientras el costo humano sube un 50% por encima de la inflación, el costo de la tecnología tiende a estabilizarse, permitiendo una <span class="text-[#dc7c60] font-black underline decoration-4 underline-offset-8">mitigación real del riesgo financiero</span>."
+                            "La tecnología es la única variable que podemos controlar. Mientras el costo humano sube un 50% por encima de la inflación, la tecnología ofrece una <span class="text-[#dc7c60] font-black underline decoration-4 underline-offset-8">mitigación real del riesgo financiero</span>."
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- Footer con Pilares -->
+            <!-- Footer -->
             <footer class="p-12 bg-[#fbc6d6]/10 border-t border-[#d8adb2]/30 text-[#4d3d4a]">
                 <div class="grid md:grid-cols-3 gap-10 mb-12">
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#d8adb2]/20 flex flex-col items-center transform hover:-translate-y-1 transition-transform">
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#d8adb2]/20 flex flex-col items-center">
                         <i data-lucide="info" class="text-[#915b6c] mb-4 w-8 h-8"></i>
                         <span class="text-xs font-black uppercase tracking-widest text-center">Consultoría Estratégica</span>
                     </div>
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#dc7c60]/30 flex flex-col items-center transform hover:-translate-y-1 transition-transform">
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#dc7c60]/30 flex flex-col items-center">
                         <i data-lucide="shield-check" class="text-[#dc7c60] mb-4 w-8 h-8"></i>
                         <span class="text-xs font-black uppercase tracking-widest text-center">Mitigación del riesgo</span>
                     </div>
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#a9c1ee]/40 flex flex-col items-center transform hover:-translate-y-1 transition-transform">
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#a9c1ee]/40 flex flex-col items-center">
                         <i data-lucide="trending-up" class="text-[#a9c1ee] mb-4 w-8 h-8"></i>
                         <span class="text-xs font-black uppercase tracking-widest text-center">Valorización Real</span>
                     </div>
@@ -234,22 +280,15 @@
                 <div class="border-t border-[#d8adb2]/40 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] font-black tracking-[0.3em] text-[#915b6c]">
                     <p class="bg-[#4d3d4a] text-white px-6 py-2 rounded-full shadow-lg uppercase">Comunicación Oficial Asamblea</p>
                     <div class="flex gap-10">
-                        <span class="hover:text-[#e47053] transition-colors cursor-pointer border-b border-transparent hover:border-[#e47053]">INFO@IDEARSERVICIOS.COM</span>
+                        <span>INFO@IDEARSERVICIOS.COM</span>
                     </div>
                     <p>© 2026 IDEAR SERVICIOS</p>
                 </div>
             </footer>
         </main>
-        
-        <div class="mt-10 text-center pb-10">
-            <p class="text-xs text-[#4d3d4a] font-black uppercase tracking-[0.6em] opacity-40 italic">
-                Protegiendo su futuro financiero
-            </p>
-        </div>
     </div>
 
     <script>
-        // Inicializar iconos de Lucide
         lucide.createIcons();
     </script>
 </body>
