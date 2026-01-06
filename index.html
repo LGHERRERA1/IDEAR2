@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDEAR SERVICIOS - Análisis SMMLV y Soluciones Tech</title>
+    <title>IDEAR SERVICIOS - Sostenibilidad y Tecnología</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -12,169 +12,171 @@
             font-family: 'Inter', sans-serif; 
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
-        }
-        
-        .zebra-row:nth-child(even) { 
-            background-color: rgba(172, 126, 138, 0.1) !important; 
-        }
-        
-        .tech-card:hover { 
-            transform: translateY(-5px); 
-            transition: all 0.3s ease; 
+            background-color: #fcf1f3;
         }
 
-        /* AJUSTES CRÍTICOS PARA PDF SIN CORTES VISIBLES */
+        /* TABLA PREMIUM INSTITUCIONAL */
+        .premium-table-wrapper {
+            background-color: #4d3d4a !important;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        .table-header {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            color: #ffffff !important;
+        }
+        
+        .zebra-row { color: #ffffff !important; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.2s; }
+        .zebra-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.04) !important; }
+        .zebra-row:hover { background-color: rgba(228, 112, 83, 0.2) !important; }
+
+        .scroll-area {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* TARJETAS TECH INTERACTIVAS CON RESALTE NOTORIO */
+        .tech-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .tech-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background-color: #4d3d4a !important;
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+        }
+        .tech-card:hover * { color: #ffffff !important; }
+
+        /* MODAL 50/50 SIN RECORTES */
+        #modal-overlay {
+            transition: opacity 0.2s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .modal-container {
+            max-width: 1000px;
+            width: 95%;
+            background: white;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 40px 80px -15px rgba(0,0,0,0.6);
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+
+        @media (min-width: 768px) {
+            .modal-container { flex-direction: row; height: 550px; }
+        }
+
+        /* Área Visual: Garantía de No-Recorte */
+        .modal-visual {
+            background-color: #f8fafc;
+            flex: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-bottom: 6px solid #e47053;
+        }
+
+        @media (min-width: 768px) {
+            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; }
+        }
+
+        .modal-visual img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* NUNCA SE CORTA LA IMAGEN */
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .modal-info {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+
         @media print {
-            @page {
-                size: auto;
-                margin: 0mm;
-            }
-            
-            html, body {
-                background-color: #ffffff !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .max-w-5xl {
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 !important;
-            }
-
-            header, main, section, footer, .rounded-t-\[2\.5rem\], .rounded-b-\[2\.5rem\], .rounded-\[2rem\], .rounded-\[3rem\] {
-                border-radius: 0 !important;
-            }
-
-            .print-no-break {
-                break-inside: avoid !important;
-                page-break-inside: avoid !important;
-            }
-
-            .bg-\[\#4d3d4a\] { background-color: #4d3d4a !important; }
-            .bg-\[\#e47053\] { background-color: #e47053 !important; }
-            .bg-white { background-color: #ffffff !important; }
-            .bg-gradient-to-r {
-                background: linear-gradient(to right, #e47053, #dc7c60) !important;
-            }
-            
-            .shadow-2xl, .shadow-lg, .shadow-xl {
-                box-shadow: none !important;
-                border-bottom: 1px solid rgba(0,0,0,0.05);
-            }
+            .no-print { display: none !important; }
+            .scroll-area { overflow: visible !important; }
+            table { width: 100% !important; min-width: 100% !important; }
         }
     </style>
 </head>
-<body class="bg-[#fbc6d6]/20 text-[#4d3d4a] selection:bg-[#e47053]/30 min-h-screen p-2 md:p-8">
+<body class="p-2 md:p-8">
 
     <div class="max-w-5xl mx-auto">
-        <!-- Header -->
+        <!-- Header Boutique -->
         <header class="bg-[#4d3d4a] text-white rounded-t-[2.5rem] p-10 shadow-2xl flex flex-col md:flex-row justify-between items-center border-b-8 border-[#e47053]">
             <div class="flex items-center gap-6 mb-8 md:mb-0">
-                <!-- Espacio para el Logo -->
-                <div class="bg-white p-3 rounded-2xl shadow-xl transform -rotate-3 overflow-hidden flex items-center justify-center">
-                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="Logo IDEAR SERVICIOS" class="h-20 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150?text=IDEAR'">
+                <div class="bg-white p-3 rounded-2xl shadow-xl flex items-center justify-center transform -rotate-2">
+                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="Logo IDEAR" class="h-20 w-auto object-contain">
                 </div>
                 <div>
-                    <h1 class="text-4xl font-black tracking-tighter leading-none">
-                        IDEAR <span class="text-[#efa1b9]">SERVICIOS</span>
-                    </h1>
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-[#d8adb2] font-bold mt-2">Arquitectura de Gestión Residencial</p>
+                    <h1 class="text-4xl font-black tracking-tighter leading-none uppercase">IDEAR <span class="text-[#efa1b9]">SERVICIOS</span></h1>
+                    <p class="text-[11px] uppercase tracking-[0.4em] text-[#d8adb2] font-black mt-2">Gerencia de Propiedad Horizontal</p>
                 </div>
             </div>
-            <div class="text-center md:text-right border-t md:border-t-0 md:border-l border-[#ac7e8a] pt-6 md:pt-0 md:pl-10">
-                <h2 class="text-xl font-serif italic text-[#fbc6d6]">Sostenibilidad del Patrimonio</h2>
-                <p class="text-xs text-[#d8adb2] font-medium tracking-wide uppercase">Reporte de Desviación Económica</p>
+            <div class="text-center md:text-right border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-10">
+                <h2 class="text-xl font-serif italic text-[#fbc6d6]">Gestión y Sostenibilidad</h2>
+                <p class="text-xs text-[#d8adb2] font-medium tracking-widest uppercase">Reporte Estratégico 2021-2026</p>
             </div>
         </header>
 
         <main class="bg-white shadow-2xl overflow-hidden rounded-b-[2.5rem]">
             <!-- Intro -->
-            <section class="p-12 text-center relative bg-gradient-to-b from-[#fbc6d6]/30 to-white">
-                <div class="inline-block px-4 py-1 rounded-full bg-[#a9c1ee]/30 text-[#4d3d4a] text-[11px] font-black uppercase tracking-widest mb-6 border border-[#a9c1ee]/50">
-                    Análisis de Coyuntura
-                </div>
-                <h3 class="text-4xl font-black text-[#4d3d4a] mb-8 leading-tight">
-                    El reto de la <span class="text-[#e47053]">cuota de administración</span>
-                </h3>
-                <p class="text-xl text-[#4d3d4a] max-w-3xl mx-auto leading-relaxed font-semibold">
-                    En un entorno donde el <span class="text-[#915b6c] border-b-4 border-[#a9c1ee]">IPC</span> y el <span class="text-[#dc7c60] border-b-4 border-[#dc7c60]/40">Salario Mínimo</span> se distancian, la eficiencia operativa deja de ser una opción para convertirse en una necesidad.
+            <section class="p-12 text-center bg-gradient-to-b from-[#fbc6d6]/20 to-white">
+                <div class="inline-block px-4 py-1 rounded-full bg-[#a9c1ee]/30 text-[#4d3d4a] text-[10px] font-black uppercase tracking-widest mb-6 border border-[#a9c1ee]/50">Nota de Gerencia</div>
+                <h3 class="text-4xl font-black text-[#4d3d4a] mb-8 tracking-tighter italic">Impacto del Salario Mínimo (<span class="text-[#e47053]">SMMLV</span>)</h3>
+                <p class="text-xl text-[#4d3d4a] max-w-3xl mx-auto leading-relaxed font-bold opacity-90 border-l-4 border-[#efa1b9] pl-6">
+                    "La brecha acumulada del 50% entre el SMMLV y el IPC obliga a repensar el modelo de seguridad tradicional para proteger el patrimonio de los copropietarios."
                 </p>
             </section>
 
-            <!-- Matriz de Desviación (Tabla) -->
-            <section class="print-no-break px-6 md:px-12 pb-16">
-                <div class="bg-[#4d3d4a] rounded-[2rem] shadow-2xl overflow-hidden border-4 border-[#d8adb2]/30">
-                    <div class="p-8 bg-gradient-to-r from-[#4d3d4a] to-[#915b6c] border-b border-[#d8adb2]/20 flex items-center gap-5">
-                        <div class="p-2 bg-[#efa1b9]/20 rounded-lg">
-                            <i data-lucide="layers" class="text-[#efa1b9] w-8 h-8"></i>
-                        </div>
-                        <h4 class="text-white font-black tracking-widest text-xl uppercase italic">
-                            Matriz de Desviación Salarial
-                        </h4>
+            <!-- Tabla Premium -->
+            <section class="px-6 md:px-12 pb-16">
+                <div class="premium-table-wrapper">
+                    <div class="p-8 bg-black/10 flex items-center gap-4">
+                        <i data-lucide="bar-chart-3" class="text-[#efa1b9] w-8 h-8"></i>
+                        <h4 class="text-white font-black tracking-widest text-xl uppercase italic">Matriz de Desviación Salarial</h4>
                     </div>
                     
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                    <div class="scroll-area">
+                        <table class="w-full text-left border-collapse min-w-[850px]">
                             <thead>
-                                <tr class="bg-[#4d3d4a]">
-                                    <th class="p-6 text-sm font-black text-[#efa1b9] uppercase tracking-tighter w-20 text-center border-b border-[#d8adb2]/20">AÑO</th>
-                                    <th class="p-6 text-base font-bold text-white uppercase text-right border-b border-[#d8adb2]/20">SMLMV Real</th>
-                                    <th class="p-6 text-base font-bold text-[#a9c1ee] uppercase text-right bg-[#a9c1ee]/10 border-b border-[#a9c1ee]/20">Proyección IPC</th>
-                                    <th class="p-6 text-base font-bold text-[#d8adb2] uppercase text-right border-b border-[#d8adb2]/20">Aumento %</th>
-                                    <th class="p-6 text-base font-bold text-[#d8adb2] uppercase text-right border-b border-[#d8adb2]/20">IPC (%)</th>
+                                <tr class="table-header">
+                                    <th class="p-6 text-[11px] font-black uppercase tracking-widest text-center border-r border-white/5">Año</th>
+                                    <th class="p-6 text-sm font-bold text-right">SMMLV Real (COP)</th>
+                                    <th class="p-6 text-sm font-bold text-right text-[#a9c1ee]">💡 SMLMV con IPC</th>
+                                    <th class="p-6 text-sm font-bold text-right text-[#efa1b9]">Aumento Real</th>
+                                    <th class="p-6 text-sm font-bold text-right text-white">IPC (%)</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-[#d8adb2]/10">
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2021</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 908.526</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 908.526</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#915b6c]">—</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">—</td>
-                                </tr>
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2022</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 999.379</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.027.725</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#dc7c60]">10,00%</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">13,12%</td>
-                                </tr>
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2023</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.159.279</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.123.097</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#dc7c60]">16,00%</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">9,28%</td>
-                                </tr>
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2024</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.299.204</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.181.499</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#dc7c60]">12,07%</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">5,20%</td>
-                                </tr>
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10">2025</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.422.629</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.244.118</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#dc7c60]">9,50%</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">5,30%</td>
-                                </tr>
-                                <tr class="zebra-row transition-all">
-                                    <td class="p-6 text-sm font-black text-center text-[#efa1b9] border-r border-[#d8adb2]/10 text-amber-500">2026</td>
-                                    <td class="p-6 text-lg text-right font-bold text-white tracking-tight">$ 1.759.792</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#a9c1ee] bg-[#a9c1ee]/10 italic">$ 1.308.812</td>
-                                    <td class="p-6 text-lg text-right font-black text-[#dc7c60]">23,70%</td>
-                                    <td class="p-6 text-lg text-right text-[#d8adb2] font-medium">5,20%</td>
-                                </tr>
-                                <tr class="bg-gradient-to-r from-[#e47053] to-[#dc7c60]">
-                                    <td class="p-8 text-xs font-black text-white uppercase text-center border-r border-white/20">Dif.</td>
-                                    <td class="p-8 text-4xl font-black text-right text-white tracking-tighter">194%</td>
-                                    <td class="p-8 text-4xl font-black text-right text-[#4d3d4a] tracking-tighter">144%</td>
+                            <tbody>
+                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2021 (Base)</td><td class="p-5 text-right font-medium text-white">$ 908.526</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 908.526</td><td class="p-5 text-right">—</td><td class="p-5 text-right">—</td></tr>
+                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2022</td><td class="p-5 text-right font-medium text-white">$ 999.379</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.027.725</td><td class="p-5 text-right text-white font-bold">10,00%</td><td class="p-5 text-right text-white/70 font-medium">13,12%</td></tr>
+                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2023</td><td class="p-5 text-right font-medium text-white">$ 1.159.279</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.123.097</td><td class="p-5 text-right text-white font-bold">16,00%</td><td class="p-5 text-right text-white/70 font-medium">9,28%</td></tr>
+                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2024</td><td class="p-5 text-right font-medium text-white">$ 1.299.204</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.181.499</td><td class="p-5 text-right text-white font-bold">12,07%</td><td class="p-5 text-right text-white/70 font-medium">5,20%</td></tr>
+                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2025</td><td class="p-5 text-right font-medium text-white">$ 1.422.629</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.244.118</td><td class="p-5 text-right text-white font-bold">9,50%</td><td class="p-5 text-right text-white/70 font-medium">5,30%</td></tr>
+                                <tr class="zebra-row bg-white/5"><td class="p-5 text-center font-black text-[#e47053]">2026</td><td class="p-5 text-right font-black text-white">$ 1.759.792</td><td class="p-5 text-right italic text-[#a9c1ee] font-black">$ 1.308.812</td><td class="p-5 text-right text-[#e47053] font-black underline decoration-2">23,70%</td><td class="p-5 text-right font-black text-white font-medium">5,20%</td></tr>
+                                <tr class="bg-black/30 text-white">
+                                    <td class="p-8 font-black uppercase text-center border-r border-white/5 tracking-tighter">Variación</td>
+                                    <td class="p-8 text-4xl font-black text-right tracking-tighter text-white">194%</td>
+                                    <td class="p-8 text-4xl font-black text-right tracking-tighter text-[#a9c1ee]">144%</td>
                                     <td colspan="2" class="p-8 text-center">
-                                        <div class="bg-white shadow-2xl text-[#dc7c60] px-8 py-3 rounded-2xl text-base font-black inline-flex items-center gap-3">
-                                            <i data-lucide="zap" class="w-6 h-6 fill-current"></i> BRECHA DEL 50%
+                                        <div class="bg-[#e47053] text-white px-6 py-3 rounded-2xl font-black text-base inline-flex items-center gap-3 shadow-xl transform scale-110 border border-white/20">
+                                            <i data-lucide="zap" class="w-6 h-6 fill-white"></i> BRECHA REAL: +50%
                                         </div>
                                     </td>
                                 </tr>
@@ -184,112 +186,159 @@
                 </div>
             </section>
 
-            <!-- Ecosistema Tecnológico -->
-            <section class="p-12 bg-[#fbc6d6]/10">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl font-black text-[#4d3d4a] uppercase tracking-widest mb-4">Ecosistema de Seguridad Inteligente</h3>
-                    <p class="text-[#915b6c] font-medium max-w-2xl mx-auto italic">Invertir en tecnología hoy es blindar el presupuesto de mañana frente al aumento de nóminas.</p>
+            <!-- Grid de Soluciones Interactivas -->
+            <section class="p-12 bg-[#fbc6d6]/10 border-t border-slate-100">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-black text-[#4d3d4a] uppercase tracking-widest mb-4">Soluciones Tecnológicas IDEAR</h3>
+                    <p class="text-[#915b6c] font-bold italic text-lg tracking-tight underline decoration-[#a9c1ee] underline-offset-8">Haga clic en cada pilar para ver el activo tecnológico real.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Tarjetas de tecnología -->
-                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#a9c1ee]/30 shadow-lg">
-                        <div class="bg-[#a9c1ee]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="scan-eye" class="text-[#4d3d4a] w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Perímetros Autónomos</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Cercos electrónicos con <b>Analítica de Video</b> e IA. Activan alertas externas inmediatas sin necesidad de guardias de ronda física.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div onclick="openModal('perimetro')" class="tech-card bg-white p-8 rounded-[2.5rem] border-2 border-[#a9c1ee]/30 shadow-lg">
+                        <div class="bg-[#a9c1ee]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="shield-check" class="text-[#4d3d4a] w-10 h-10"></i></div>
+                        <h4 class="font-black text-xl uppercase mb-3 text-[#4d3d4a]">Cercos Virtuales</h4>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed opacity-90 font-medium">Protección perimetral inteligente con analítica de video e IA.</p>
                     </div>
 
-                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#efa1b9]/30 shadow-lg">
-                        <div class="bg-[#efa1b9]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="headset" class="text-[#4d3d4a] w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Portería Remota / Virtual</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Gestión centralizada mediante intercomunicación IP. Reduce el <b>60% del costo de nómina</b> al eliminar turnos presenciales.</p>
+                    <div onclick="openModal('porteria')" class="tech-card bg-white p-8 rounded-[2.5rem] border-2 border-[#efa1b9]/30 shadow-lg">
+                        <div class="bg-[#efa1b9]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="monitor-dot" class="text-[#4d3d4a] w-10 h-10"></i></div>
+                        <h4 class="font-black text-xl uppercase mb-3 text-[#4d3d4a]">Portería Virtual</h4>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed opacity-90 font-medium">Gestión remota HD que optimiza los costos operativos fijos.</p>
                     </div>
 
-                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#dc7c60]/30 shadow-lg">
-                        <div class="bg-[#dc7c60]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="fingerprint" class="text-[#4d3d4a] w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Acceso Biométrico 4.0</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Reconocimiento facial y QR dinámico. Automatiza los libros de ingreso sin intervención humana, eliminando el error humano.</p>
+                    <div onclick="openModal('acceso')" class="tech-card bg-white p-8 rounded-[2.5rem] border-2 border-[#dc7c60]/30 shadow-lg">
+                        <div class="bg-[#dc7c60]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="scan-face" class="text-[#4d3d4a] w-10 h-10"></i></div>
+                        <h4 class="font-black text-xl uppercase mb-3 text-[#4d3d4a]">Acceso Biométrico</h4>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed opacity-90 font-medium">Terminales de reconocimiento facial para ingresos autónomos.</p>
                     </div>
 
-                    <div class="print-no-break tech-card bg-[#4d3d4a] p-6 rounded-[2rem] shadow-xl text-white">
-                        <div class="bg-[#e47053] w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="package-search" class="text-white w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#efa1b9] text-lg uppercase mb-2">Smart Lockers</h4>
-                        <p class="text-sm text-[#d8adb2] leading-relaxed">Casilleros inteligentes para correspondencia. Autogestión de paquetes que elimina la necesidad de custodia física por personal.</p>
+                    <div onclick="openModal('lockers')" class="tech-card bg-white p-8 rounded-[2.5rem] border-2 border-[#e47053]/30 shadow-lg">
+                        <div class="bg-[#e47053]/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="package" class="text-[#e47053] w-10 h-10"></i></div>
+                        <h4 class="font-black text-xl uppercase mb-3 text-[#4d3d4a]">Smart Lockers</h4>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed opacity-90 font-medium font-bold">Casilleros inteligentes automatizados para paquetería 24/7.</p>
                     </div>
 
-                    <div class="print-no-break tech-card bg-white p-6 rounded-[2rem] border-2 border-[#ac7e8a]/30 shadow-lg">
-                        <div class="bg-[#ac7e8a]/20 w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="thermometer-snowflake" class="text-[#4d3d4a] w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Monitoreo IOT</h4>
-                        <p class="text-sm text-[#915b6c] leading-relaxed">Sensores de inundación, humo e intrusión monitoreados 24/7 de forma externa. Prevención sin supervisión humana presencial.</p>
-                    </div>
-
-                    <div class="print-no-break tech-card bg-[#a9c1ee]/20 p-6 rounded-[2rem] border-2 border-[#a9c1ee] shadow-lg">
-                        <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center mb-5">
-                            <i data-lucide="radio-receiver" class="text-[#4d3d4a] w-8 h-8"></i>
-                        </div>
-                        <h4 class="font-black text-[#4d3d4a] text-lg uppercase mb-2">Central de Respuesta</h4>
-                        <p class="text-sm text-[#4d3d4a] leading-relaxed font-semibold underline text-center">Respuesta Profesional Externa</p>
+                    <div onclick="openModal('sensores')" class="tech-card bg-white p-8 rounded-[2.5rem] border-2 border-[#ac7e8a]/30 shadow-lg">
+                        <div class="bg-[#ac7e8a]/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="bell-ring" class="text-[#4d3d4a] w-10 h-10"></i></div>
+                        <h4 class="font-black text-xl uppercase mb-3 text-[#4d3d4a]">Prevención IOT</h4>
+                        <p class="text-sm text-[#4d3d4a] leading-relaxed opacity-90 font-medium">Sensores inteligentes de gas e inundación con monitoreo preventivo.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Diagnóstico Estratégico -->
-            <section class="print-no-break mx-12 mb-16 p-10 bg-[#dc7c60]/10 border-2 border-[#dc7c60]/30 rounded-[3rem] relative shadow-inner mt-8">
-                <div class="absolute -top-6 left-12 bg-[#dc7c60] text-white px-8 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                    Diagnóstico Estratégico
+            <!-- Footer Boutique -->
+            <footer class="p-12 bg-[#4d3d4a] text-white rounded-b-[2.5rem]">
+                <div class="grid md:grid-cols-3 gap-8 mb-12 text-center text-white/80">
+                    <div class="flex flex-col items-center"><i data-lucide="info" class="mb-2 text-[#efa1b9]"></i><span class="text-xs uppercase font-black tracking-widest">Consultoría PH</span></div>
+                    <div class="flex flex-col items-center"><i data-lucide="shield" class="mb-2 text-[#e47053]"></i><span class="text-xs uppercase font-black tracking-widest">Mitigación Riesgo</span></div>
+                    <div class="flex flex-col items-center"><i data-lucide="trending-up" class="mb-2 text-[#a9c1ee]"></i><span class="text-xs uppercase font-black tracking-widest">Valorización Real</span></div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-10 items-center">
-                    <div class="bg-white p-7 rounded-[2.5rem] shadow-xl border border-[#dc7c60]/20 shrink-0">
-                        <i data-lucide="shield-alert" class="text-[#dc7c60] w-14 h-14"></i>
-                    </div>
-                    <div>
-                        <p class="text-[#4d3d4a] text-xl leading-relaxed font-bold italic">
-                            "La tecnología es la única variable que podemos controlar. Mientras el costo humano sube un 50% por encima de la inflación, la tecnología ofrece una <span class="text-[#dc7c60] font-black underline decoration-4 underline-offset-8">mitigación real del riesgo financiero</span>."
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="p-12 bg-[#fbc6d6]/10 border-t border-[#d8adb2]/30 text-[#4d3d4a]">
-                <div class="grid md:grid-cols-3 gap-10 mb-12">
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#d8adb2]/20 flex flex-col items-center">
-                        <i data-lucide="info" class="text-[#915b6c] mb-4 w-8 h-8"></i>
-                        <span class="text-xs font-black uppercase tracking-widest text-center">Consultoría Estratégica</span>
-                    </div>
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#dc7c60]/30 flex flex-col items-center">
-                        <i data-lucide="shield-check" class="text-[#dc7c60] mb-4 w-8 h-8"></i>
-                        <span class="text-xs font-black uppercase tracking-widest text-center">Mitigación del riesgo</span>
-                    </div>
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-[#a9c1ee]/40 flex flex-col items-center">
-                        <i data-lucide="trending-up" class="text-[#a9c1ee] mb-4 w-8 h-8"></i>
-                        <span class="text-xs font-black uppercase tracking-widest text-center">Valorización Real</span>
-                    </div>
-                </div>
-                
-                <div class="border-t border-[#d8adb2]/40 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] font-black tracking-[0.3em] text-[#915b6c]">
-                    <p class="bg-[#4d3d4a] text-white px-6 py-2 rounded-full shadow-lg uppercase">Comunicación Oficial Asamblea</p>
-                    <div class="flex gap-10">
-                        <span>INFO@IDEARSERVICIOS.COM</span>
-                    </div>
-                    <p>© 2026 IDEAR SERVICIOS</p>
+                <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">
+                    <p>IDEAR SERVICIOS © 2026</p>
+                    <p class="hover:text-[#efa1b9] transition-colors cursor-pointer tracking-widest uppercase">info@idearservicios.com</p>
                 </div>
             </footer>
         </main>
     </div>
 
+    <!-- MODAL SYSTEM - SOLUCIÓN DEFINITIVA IMÁGENES -->
+    <div id="modal-overlay" class="fixed inset-0 bg-[#4d3d4a]/95 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <!-- Izquierda: Imagen Completa Verificada -->
+            <div class="modal-visual">
+                <img id="modal-img" src="" alt="Hardware de Seguridad Real">
+                <button onclick="closeModal()" class="md:hidden absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <!-- Derecha: Información Explicativa -->
+            <div class="modal-info">
+                <button onclick="closeModal()" class="hidden md:flex self-end mb-4 bg-slate-100 hover:bg-slate-200 text-[#4d3d4a] p-2 rounded-full transition-all">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div class="flex items-center gap-5 mb-6">
+                    <div id="modal-icon-bg" class="p-4 rounded-[1.5rem] shadow-md text-white"></div>
+                    <h4 id="modal-title" class="text-2xl md:text-3xl font-black text-[#4d3d4a] uppercase tracking-tighter"></h4>
+                </div>
+                <div id="modal-text" class="text-lg text-[#4d3d4a] leading-relaxed mb-10 font-medium border-l-4 border-[#e47053] pl-6 italic"></div>
+                <button onclick="closeModal()" class="w-full py-5 bg-[#e47053] text-white font-black uppercase tracking-widest rounded-2xl shadow-xl hover:brightness-110 active:scale-95 transition-all">Regresar al Informe</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        const techContent = {
+            perimetro: {
+                title: "Cercos de Protección con IA",
+                text: "Detectamos intrusiones reales mediante <b>barreras invisibles de cámaras exteriores</b>. La IA diferencia humanos de animales, activando alertas instantáneas en nuestra central SOC y eliminando la necesidad de guardias físicos.",
+                img: "https://i.postimg.cc/ry7gmvvp/cerco-virtual4.jpg", // NUEVA IMAGEN PERSONALIZADA
+                icon: "shield-check",
+                color: "#a9c1ee"
+            },
+            porteria: {
+                title: "Centro de Portería Remota IP",
+                text: "Sustituimos la nómina costosa por un sistema de <b>intercomunicación HD atendida por expertos</b> desde una central blindada. Ofrece seguridad total y atención profesional 24/7 sin riesgos laborales locales.",
+                img: "https://i.postimg.cc/HkRwL5Jr/porteria-virtual3.jpg", 
+                icon: "monitor-dot",
+                color: "#efa1b9"
+            },
+            acceso: {
+                title: "Acceso Facial Biométrico 4.0",
+                text: "Hardware de última tecnología para entrada manos libres de residentes. Los visitantes reciben <b>códigos QR temporales</b>. El sistema registra bitácoras inalterables en la nube, garantizando control total.",
+                img: "https://i.postimg.cc/V6GLY9vz/acceso-biometrico.jpg", 
+                icon: "scan-face",
+                color: "#dc7c60"
+            },
+            lockers: {
+                title: "Smart Lockers de Paquetería",
+                text: "Gabinete inteligente que gestiona sus entregas 24/7. El mensajero deposita de forma autónoma y usted retira con un PIN único. <b>Eficiencia total</b> que libera a la administración de personal extra.",
+                img: "https://i.postimg.cc/YS2vMCRk/smart-lockers.jpg", 
+                icon: "package",
+                color: "#e47053"
+            },
+            sensores: {
+                title: "Prevención Activa IOT",
+                text: "Sensores inalámbricos de gas, humo e inundación. La tecnología reacciona ante el primer síntoma, notificando a la central y <b>previniendo daños catastróficos</b> a la infraestructura común.",
+                img: "https://i.postimg.cc/NfPJ1K9q/detectores-gas.jpg", 
+                icon: "bell-ring",
+                color: "#ac7e8a"
+            }
+        };
+
+        function openModal(id) {
+            const data = techContent[id];
+            const overlay = document.getElementById('modal-overlay');
+            const container = overlay.querySelector('.modal-container');
+            const imgEl = document.getElementById('modal-img');
+            
+            imgEl.style.opacity = '0';
+            imgEl.src = data.img;
+            imgEl.onload = () => imgEl.style.opacity = '1';
+
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-text').innerHTML = data.text;
+            
+            const iconBg = document.getElementById('modal-icon-bg');
+            iconBg.style.backgroundColor = data.color;
+            iconBg.innerHTML = `<i data-lucide="${data.icon}" class="w-10 h-10"></i>`;
+            
+            overlay.classList.remove('pointer-events-none');
+            overlay.classList.add('opacity-100');
+            container.style.transform = "scale(1)";
+            
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            const container = overlay.querySelector('.modal-container');
+            
+            overlay.classList.add('pointer-events-none');
+            overlay.classList.remove('opacity-100');
+            container.style.transform = "scale(0.95)";
+        }
     </script>
 </body>
 </html>
