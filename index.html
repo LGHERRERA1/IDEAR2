@@ -33,7 +33,7 @@
         .zebra-row { color: #ffffff !important; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .zebra-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.04) !important; }
 
-        /* TARJETAS TECH: DISEÑO INVERTIDO (NORMAL: OSCURO, HOVER: CLARO) */
+        /* TARJETAS TECH & OP: DISEÑO INVERTIDO */
         .tech-card {
             background-color: #4d3d4a !important;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -68,24 +68,17 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
         }
 
-        .tech-card:hover .icon-wrapper {
-            background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(77, 61, 74, 0.1);
-            border: 1px solid rgba(77, 61, 74, 0.05);
-        }
-
-        /* MODAL CORREGIDO: COMPACTO Y SIN CORTES */
+        /* MODAL ESTRUCTURA COMPACTA - FIX DEFINITIVO */
         #modal-overlay {
             transition: opacity 0.2s ease;
             backdrop-filter: blur(12px);
         }
 
         .modal-container {
-            max-width: 900px;
-            width: 90%;
+            max-width: 950px;
+            width: 92%;
             background: white;
             border-radius: 2.5rem;
             display: flex;
@@ -103,38 +96,46 @@
 
         .modal-visual {
             background-color: #f1f5f9;
-            flex: 1.2;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
             border-bottom: 6px solid #e47053;
-            max-height: 250px;
+            max-height: 180px; /* Reducido para celular */
         }
 
         @media (min-width: 768px) {
-            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; max-height: 100%; }
+            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; max-height: 100%; flex: 1.2; padding: 2rem; }
         }
 
         .modal-visual img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;
+            object-fit: contain !important;
         }
 
         .modal-info {
             flex: 1;
-            padding: 1.8rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Mantiene el botón al final */
+            justify-content: flex-start;
+            position: relative;
         }
 
         @media (min-width: 768px) {
             .modal-info { padding: 2.5rem; }
         }
 
-        /* MANIFIESTO ESTILO EDITORIAL */
+        .abs-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 20;
+        }
+
+        /* MANIFIESTO */
         .litho-frame {
             border: 1px solid #4d3d4a;
             position: relative;
@@ -154,7 +155,7 @@
 <body class="p-2 md:p-8 text-[#4d3d4a]">
 
     <div class="max-w-6xl mx-auto">
-        <!-- Header -->
+        <!-- Cabecera -->
         <header class="bg-[#4d3d4a] text-white rounded-t-[3rem] p-10 md:p-12 shadow-2xl flex flex-col md:flex-row justify-between items-center border-b-[10px] border-[#e47053]">
             <div class="flex items-center gap-6 mb-8 md:mb-0">
                 <div class="bg-white p-4 rounded-3xl shadow-xl flex items-center justify-center transform -rotate-2">
@@ -180,14 +181,13 @@
                 </p>
             </section>
 
-            <!-- Tabla de Desviación -->
+            <!-- Matriz de Desviación -->
             <section class="px-4 md:px-16 pb-20">
                 <div class="premium-table-wrapper">
                     <div class="p-8 bg-black/10 flex items-center gap-5">
                         <i data-lucide="bar-chart-4" class="text-[#efa1b9] w-8 h-8"></i>
                         <h4 class="text-white font-serif-premium italic text-2xl tracking-tight uppercase">Matriz de Desviación Salarial</h4>
                     </div>
-                    
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse min-w-[800px]">
                             <thead>
@@ -205,7 +205,7 @@
                                 <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2023</td><td class="p-5 text-right font-medium">$ 1.159.279</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.123.097</td><td class="p-5 text-right">16,00%</td><td class="p-5 text-right opacity-60">9,28%</td></tr>
                                 <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2024</td><td class="p-5 text-right font-medium">$ 1.299.204</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.181.499</td><td class="p-5 text-right">12,07%</td><td class="p-5 text-right opacity-60">5,20%</td></tr>
                                 <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2025</td><td class="p-5 text-right font-medium">$ 1.422.629</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.244.118</td><td class="p-5 text-right">9,50%</td><td class="p-5 text-right opacity-60">5,30%</td></tr>
-                                <tr class="zebra-row bg-white/5"><td class="p-5 text-center font-black text-[#e47053] text-lg">2026</td><td class="p-5 text-right font-black text-white text-2xl">$ 1.759.792</td><td class="p-5 text-right italic text-[#a9c1ee] font-black">$ 1.308.812</td><td class="p-5 text-right text-[#e47053] font-black text-2xl">23,70%</td><td class="p-5 text-right font-black">5,20%</td></tr>
+                                <tr class="zebra-row bg-white/5"><td class="p-5 text-center font-black text-[#e47053] text-lg">2026</td><td class="p-5 text-right font-black text-[#4d3d4a] text-2xl">$ 1.759.792</td><td class="p-5 text-right italic text-[#a9c1ee] font-black">$ 1.308.812</td><td class="p-5 text-right text-[#e47053] font-black text-2xl">23,70%</td><td class="p-5 text-right font-black text-[#4d3d4a]">5,20%</td></tr>
                                 <tr class="bg-black/30 text-white">
                                     <td class="p-10 font-black uppercase text-center border-r border-white/5 tracking-tighter">Impacto</td>
                                     <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter">194%</td>
@@ -222,7 +222,7 @@
                 </div>
             </section>
 
-            <!-- El balance entre automatizar y humanizar -->
+            <!-- Manifiesto -->
             <section class="p-8 md:p-24 bg-white border-t border-slate-100">
                 <div class="max-w-5xl mx-auto mb-20">
                     <div class="litho-frame text-center shadow-xl">
@@ -236,51 +236,59 @@
                 </div>
 
                 <div class="text-center mb-16 px-4">
-                    <h3 class="font-serif-premium italic text-4xl text-[#4d3d4a] mb-4">Ecosistema Tecnológico</h3>
+                    <h3 class="font-serif-premium italic text-4xl text-[#4d3d4a] mb-4">Ecosistema Tecnológico de Vanguardia</h3>
                     <p class="text-[#ac7e8a] font-black uppercase tracking-[0.4em] text-xs">Arquitectura de soluciones para un patrimonio blindado</p>
                 </div>
 
-                <!-- Grid de Tarjetas Invertido -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0">
-                    
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-0">
                     <div onclick="openModal('perimetro')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper">
-                            <i data-lucide="shield-check" class="w-9 h-9"></i>
-                        </div>
+                        <div class="icon-wrapper"><i data-lucide="shield-check" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Cercos Virtuales</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Protección perimetral inteligente con analítica activa de video e IA.</p>
                     </div>
-
                     <div onclick="openModal('porteria')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper">
-                            <i data-lucide="monitor-dot" class="w-9 h-9"></i>
-                        </div>
+                        <div class="icon-wrapper"><i data-lucide="monitor-dot" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Portería Virtual</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Gestión remota HD que optimiza drásticamente el costo operativo fijo.</p>
                     </div>
-
                     <div onclick="openModal('acceso')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper">
-                            <i data-lucide="scan-face" class="w-9 h-9"></i>
-                        </div>
+                        <div class="icon-wrapper"><i data-lucide="scan-face" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Acceso Biométrico</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Terminales faciales 4.0 para un flujo residencial libre de fricciones.</p>
                     </div>
-
                     <div onclick="openModal('lockers')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper">
-                            <i data-lucide="package" class="w-9 h-9"></i>
-                        </div>
+                        <div class="icon-wrapper"><i data-lucide="package" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Smart Lockers</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Autogestión de paquetería 24/7 que garantiza seguridad y privacidad total.</p>
                     </div>
-
                     <div onclick="openModal('sensores')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper">
-                            <i data-lucide="bell-ring" class="w-9 h-9"></i>
-                        </div>
+                        <div class="icon-wrapper"><i data-lucide="bell-ring" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Prevención IOT</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Sensores de gas e inundación para una detección técnica proactiva.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ECOSISTEMA OPERATIVO -->
+            <section class="p-8 md:p-24 bg-[#fbc6d6]/10 border-t border-slate-100">
+                <div class="text-center mb-16 px-4">
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#e47053] mb-4 block">Evolución del Servicio</span>
+                    <h3 class="font-serif-premium italic text-4xl md:text-5xl text-[#4d3d4a] mb-6">Ecosistema Operativo Eficiente</h3>
+                    <p class="text-lg md:text-xl text-[#4d3d4a] max-w-3xl mx-auto leading-relaxed font-medium opacity-80">
+                        Repensamos la logística presencial para transformar el gasto en <span class="text-[#ac7e8a] font-bold">inversión en bienestar</span>.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-0">
+                    <div onclick="openModal('oficios')" class="tech-card group shadow-lg border-2 border-[#efa1b9]/30">
+                        <div class="icon-wrapper"><i data-lucide="user-cog" class="w-9 h-9"></i></div>
+                        <h4 class="font-serif-premium italic text-2xl mb-4">Optimización de Perfil</h4>
+                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Migración de vigilantes de 12h a auxiliares de oficios varios de 8h: ahorro drástico por jornada y perfil.</p>
+                    </div>
+                    <div onclick="openModal('jardineria')" class="tech-card group shadow-lg border-2 border-[#efa1b9]/30">
+                        <div class="icon-wrapper"><i data-lucide="leaf" class="w-9 h-9"></i></div>
+                        <h4 class="font-serif-premium italic text-2xl mb-4">Paisajismo Sostenible</h4>
+                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Evolución hacia jardines de bajo mantenimiento basados en prado y árboles estructurales.</p>
                     </div>
                 </div>
             </section>
@@ -300,29 +308,38 @@
         </main>
     </div>
 
-    <!-- MODAL SYSTEM - CORRECCIÓN DE VISIBILIDAD Y BOTÓN REGRESAR -->
+    <!-- MODAL SYSTEM - CORRECCIÓN DE DISTRIBUCIÓN VERTICAL -->
     <div id="modal-overlay" class="fixed inset-0 bg-[#4d3d4a]/98 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4" onclick="closeModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
-            <!-- Visual sin recortes -->
+            <!-- Imagen con límite de altura en móvil -->
             <div class="modal-visual">
                 <img id="modal-img" src="" alt="Hardware Real">
             </div>
-            <!-- Información compacta con botón regresar fijo abajo -->
+            <!-- Info con título elevado y botón garantizado -->
             <div class="modal-info">
-                <div class="flex flex-col gap-4">
-                    <button onclick="closeModal()" class="self-end text-slate-400 hover:text-[#e47053] transition-colors">
-                        <i data-lucide="x-circle" class="w-10 h-10"></i>
+                <div class="abs-close">
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-[#e47053] transition-colors">
+                        <i data-lucide="x-circle" class="w-8 h-8 md:w-10 md:h-10"></i>
                     </button>
-                    <div class="flex items-center gap-5">
-                        <div id="modal-icon-bg" class="p-3 rounded-2xl shadow-xl text-white"></div>
-                        <h4 id="modal-title" class="font-serif-premium italic text-2xl md:text-4xl text-[#4d3d4a] leading-tight"></h4>
-                    </div>
-                    <div id="modal-text" class="text-base md:text-xl text-[#4d3d4a] leading-relaxed font-medium border-l-4 border-[#efa1b9] pl-6 mt-4"></div>
                 </div>
-                <!-- Botón regresar garantizado en la vista -->
-                <button onclick="closeModal()" class="w-full py-4 mt-8 bg-[#4d3d4a] text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-2xl hover:bg-[#e47053] active:scale-95 transition-all">
-                    Regresar al Informe
-                </button>
+                
+                <div class="flex flex-col h-full">
+                    <!-- Título más arriba -->
+                    <div class="flex items-center gap-4 mb-3 md:mb-5 pt-2">
+                        <div id="modal-icon-bg" class="p-2.5 md:p-3 rounded-2xl shadow-lg text-white shrink-0"></div>
+                        <h4 id="modal-title" class="font-serif-premium italic text-xl md:text-3xl text-[#4d3d4a] leading-none"></h4>
+                    </div>
+                    
+                    <!-- Texto con tipografía optimizada -->
+                    <div id="modal-text" class="text-[13px] md:text-lg text-[#4d3d4a] leading-relaxed font-medium border-l-4 border-[#efa1b9] pl-4 md:pl-6 mb-4"></div>
+                    
+                    <!-- Botón siempre abajo y visible -->
+                    <div class="mt-auto">
+                        <button onclick="closeModal()" class="w-full py-3 md:py-4 bg-[#4d3d4a] text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-xl shadow-xl hover:bg-[#e47053] active:scale-95 transition-all">
+                            Regresar al Informe
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -365,6 +382,20 @@
                 img: "https://i.postimg.cc/NfPJ1K9q/detectores-gas.jpg", 
                 icon: "bell-ring",
                 color: "#ac7e8a"
+            },
+            oficios: {
+                title: "Eficiencia de Perfil y Turno",
+                text: "Realizamos la transición estratégica de <b>vigilantes de 12 horas</b> por <b>auxiliares de oficios varios en turnos normales de 8 horas</b>. Reducimos el costo operativo drásticamente no solo por la normalización de la jornada laboral, sino por el cambio a un perfil especializado en hospitalidad, limpieza y cuidado preventivo del activo.",
+                img: "https://i.postimg.cc/DzZYKBQd/cambio-operativo-1.jpg", 
+                icon: "user-cog",
+                color: "#efa1b9"
+            },
+            jardineria: {
+                title: "Paisajismo de Bajo Costo",
+                text: "Simplificamos las áreas verdes sustituyendo plantas ornamentales de alto mantenimiento por un diseño basado en <b>prado y árboles estructurales</b>. Esto elimina la necesidad de jardinería intensiva, reduce el consumo de agua y garantiza una estética limpia de alta valorización patrimonial.",
+                img: "https://i.postimg.cc/tgT0qhGC/jardineria.jpg", 
+                icon: "leaf",
+                color: "#a9c1ee"
             }
         };
 
@@ -383,7 +414,7 @@
             
             const iconBg = document.getElementById('modal-icon-bg');
             iconBg.style.backgroundColor = data.color;
-            iconBg.innerHTML = `<i data-lucide="${data.icon}" class="w-8 h-8"></i>`;
+            iconBg.innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6 md:w-8 h-8"></i>`;
             
             overlay.classList.remove('pointer-events-none');
             overlay.classList.add('opacity-100');
