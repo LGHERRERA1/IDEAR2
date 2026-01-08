@@ -33,8 +33,8 @@
         .zebra-row { color: #ffffff !important; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .zebra-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.04) !important; }
 
-        /* TARJETAS TECH & OP: DISEÑO INVERTIDO */
-        .tech-card {
+        /* BASE DE TARJETAS */
+        .tech-card, .op-card {
             background-color: #4d3d4a !important;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -47,16 +47,23 @@
             min-height: 320px;
         }
 
+        /* TARJETAS TECNOLÓGICAS (ROSADO) */
         .tech-card * { color: #fbc6d6 !important; }
-        
         .tech-card:hover {
-            transform: translateY(-12px) scale(1.02);
             background-color: #fbc6d6 !important; 
             box-shadow: 0 25px 50px rgba(77, 61, 74, 0.3);
             border-color: #e47053;
         }
-
         .tech-card:hover * { color: #4d3d4a !important; }
+
+        /* TARJETAS OPERATIVAS (AZUL #a9c1ee) */
+        .op-card * { color: #a9c1ee !important; }
+        .op-card:hover {
+            background-color: #a9c1ee !important; 
+            box-shadow: 0 25px 50px rgba(77, 61, 74, 0.3);
+            border-color: #4d3d4a;
+        }
+        .op-card:hover * { color: #4d3d4a !important; }
 
         .icon-wrapper {
             background-color: rgba(255, 255, 255, 0.1);
@@ -68,9 +75,15 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        /* MODAL ESTRUCTURA COMPACTA - FIX DEFINITIVO */
+        .tech-card:hover .icon-wrapper, .op-card:hover .icon-wrapper {
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* MODAL */
         #modal-overlay {
             transition: opacity 0.2s ease;
             backdrop-filter: blur(12px);
@@ -87,26 +100,26 @@
             box-shadow: 0 50px 100px rgba(0,0,0,0.6);
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-height: 90vh;
+            max-height: 92vh;
         }
 
         @media (min-width: 768px) {
-            .modal-container { flex-direction: row; height: 500px; }
+            .modal-container { flex-direction: row; height: 520px; }
         }
 
         .modal-visual {
             background-color: #f1f5f9;
-            flex: 1;
+            flex: 1.1;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
             border-bottom: 6px solid #e47053;
-            max-height: 180px; /* Reducido para celular */
+            max-height: 180px;
         }
 
         @media (min-width: 768px) {
-            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; max-height: 100%; flex: 1.2; padding: 2rem; }
+            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; max-height: 100%; padding: 2rem; }
         }
 
         .modal-visual img {
@@ -120,7 +133,7 @@
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             position: relative;
         }
 
@@ -155,7 +168,7 @@
 <body class="p-2 md:p-8 text-[#4d3d4a]">
 
     <div class="max-w-6xl mx-auto">
-        <!-- Cabecera -->
+        <!-- Header -->
         <header class="bg-[#4d3d4a] text-white rounded-t-[3rem] p-10 md:p-12 shadow-2xl flex flex-col md:flex-row justify-between items-center border-b-[10px] border-[#e47053]">
             <div class="flex items-center gap-6 mb-8 md:mb-0">
                 <div class="bg-white p-4 rounded-3xl shadow-xl flex items-center justify-center transform -rotate-2">
@@ -174,6 +187,7 @@
 
         <main class="bg-white shadow-2xl overflow-hidden rounded-b-[3rem]">
             
+            <!-- Contexto Cifras -->
             <section class="p-10 md:p-20 text-center bg-gradient-to-b from-[#fbc6d6]/20 to-white">
                 <h3 class="font-serif-premium text-4xl md:text-7xl mb-10 leading-tight tracking-tight">Cifras que <span class="text-[#e47053] italic">transforman</span></h3>
                 <p class="text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed font-semibold opacity-90 border-l-8 border-[#efa1b9] pl-8 text-left">
@@ -181,12 +195,12 @@
                 </p>
             </section>
 
-            <!-- Matriz de Desviación -->
+            <!-- Tabla Matriz -->
             <section class="px-4 md:px-16 pb-20">
                 <div class="premium-table-wrapper">
                     <div class="p-8 bg-black/10 flex items-center gap-5">
                         <i data-lucide="bar-chart-4" class="text-[#efa1b9] w-8 h-8"></i>
-                        <h4 class="text-white font-serif-premium italic text-2xl tracking-tight uppercase">Matriz de Desviación Salarial</h4>
+                        <h4 class="text-white font-serif-premium italic text-2xl tracking-tight uppercase text-center">Matriz de Desviación Salarial</h4>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse min-w-[800px]">
@@ -208,7 +222,7 @@
                                 <tr class="zebra-row bg-white/5"><td class="p-5 text-center font-black text-[#e47053] text-lg">2026</td><td class="p-5 text-right font-black text-[#4d3d4a] text-2xl">$ 1.759.792</td><td class="p-5 text-right italic text-[#a9c1ee] font-black">$ 1.308.812</td><td class="p-5 text-right text-[#e47053] font-black text-2xl">23,70%</td><td class="p-5 text-right font-black text-[#4d3d4a]">5,20%</td></tr>
                                 <tr class="bg-black/30 text-white">
                                     <td class="p-10 font-black uppercase text-center border-r border-white/5 tracking-tighter">Impacto</td>
-                                    <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter">194%</td>
+                                    <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter text-white">194%</td>
                                     <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter text-[#a9c1ee]">144%</td>
                                     <td colspan="2" class="p-10 text-center">
                                         <div class="bg-[#e47053] text-white px-8 py-4 rounded-2xl font-black text-lg inline-flex items-center gap-3 shadow-2xl border-2 border-white/20">
@@ -222,7 +236,7 @@
                 </div>
             </section>
 
-            <!-- Manifiesto -->
+            <!-- Propósito -->
             <section class="p-8 md:p-24 bg-white border-t border-slate-100">
                 <div class="max-w-5xl mx-auto mb-20">
                     <div class="litho-frame text-center shadow-xl">
@@ -269,10 +283,10 @@
                 </div>
             </section>
 
-            <!-- ECOSISTEMA OPERATIVO -->
-            <section class="p-8 md:p-24 bg-[#fbc6d6]/10 border-t border-slate-100">
+            <!-- ECOSISTEMA OPERATIVO (AZUL) -->
+            <section class="p-8 md:p-24 bg-[#a9c1ee]/10 border-t border-slate-100">
                 <div class="text-center mb-16 px-4">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#e47053] mb-4 block">Evolución del Servicio</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#4d3d4a] mb-4 block">Evolución del Servicio</span>
                     <h3 class="font-serif-premium italic text-4xl md:text-5xl text-[#4d3d4a] mb-6">Ecosistema Operativo Eficiente</h3>
                     <p class="text-lg md:text-xl text-[#4d3d4a] max-w-3xl mx-auto leading-relaxed font-medium opacity-80">
                         Repensamos la logística presencial para transformar el gasto en <span class="text-[#ac7e8a] font-bold">inversión en bienestar</span>.
@@ -280,12 +294,20 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-0">
-                    <div onclick="openModal('oficios')" class="tech-card group shadow-lg border-2 border-[#efa1b9]/30">
+                    <!-- Optimización Personal -->
+                    <div onclick="openModal('oficios')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
                         <div class="icon-wrapper"><i data-lucide="user-cog" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Optimización de Perfil</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Migración de vigilantes de 12h a auxiliares de oficios varios de 8h: ahorro drástico por jornada y perfil.</p>
                     </div>
-                    <div onclick="openModal('jardineria')" class="tech-card group shadow-lg border-2 border-[#efa1b9]/30">
+                    <!-- Eficiencia Patrullaje -->
+                    <div onclick="openModal('rondero')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
+                        <div class="icon-wrapper"><i data-lucide="shield-ellipsis" class="w-9 h-9"></i></div>
+                        <h4 class="font-serif-premium italic text-2xl mb-4">Eficiencia en Patrullaje</h4>
+                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Reducción del rondero de 24h a 12h, delegando la supervisión nocturna a la analítica inteligente.</p>
+                    </div>
+                    <!-- Simplificación Jardinería -->
+                    <div onclick="openModal('jardineria')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
                         <div class="icon-wrapper"><i data-lucide="leaf" class="w-9 h-9"></i></div>
                         <h4 class="font-serif-premium italic text-2xl mb-4">Paisajismo Sostenible</h4>
                         <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Evolución hacia jardines de bajo mantenimiento basados en prado y árboles estructurales.</p>
@@ -308,14 +330,12 @@
         </main>
     </div>
 
-    <!-- MODAL SYSTEM - CORRECCIÓN DE DISTRIBUCIÓN VERTICAL -->
+    <!-- MODAL SYSTEM -->
     <div id="modal-overlay" class="fixed inset-0 bg-[#4d3d4a]/98 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4" onclick="closeModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
-            <!-- Imagen con límite de altura en móvil -->
             <div class="modal-visual">
-                <img id="modal-img" src="" alt="Hardware Real">
+                <img id="modal-img" src="" alt="Demostración">
             </div>
-            <!-- Info con título elevado y botón garantizado -->
             <div class="modal-info">
                 <div class="abs-close">
                     <button onclick="closeModal()" class="text-slate-400 hover:text-[#e47053] transition-colors">
@@ -324,16 +344,13 @@
                 </div>
                 
                 <div class="flex flex-col h-full">
-                    <!-- Título más arriba -->
                     <div class="flex items-center gap-4 mb-3 md:mb-5 pt-2">
                         <div id="modal-icon-bg" class="p-2.5 md:p-3 rounded-2xl shadow-lg text-white shrink-0"></div>
                         <h4 id="modal-title" class="font-serif-premium italic text-xl md:text-3xl text-[#4d3d4a] leading-none"></h4>
                     </div>
                     
-                    <!-- Texto con tipografía optimizada -->
                     <div id="modal-text" class="text-[13px] md:text-lg text-[#4d3d4a] leading-relaxed font-medium border-l-4 border-[#efa1b9] pl-4 md:pl-6 mb-4"></div>
                     
-                    <!-- Botón siempre abajo y visible -->
                     <div class="mt-auto">
                         <button onclick="closeModal()" class="w-full py-3 md:py-4 bg-[#4d3d4a] text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-xl shadow-xl hover:bg-[#e47053] active:scale-95 transition-all">
                             Regresar al Informe
@@ -388,11 +405,18 @@
                 text: "Realizamos la transición estratégica de <b>vigilantes de 12 horas</b> por <b>auxiliares de oficios varios en turnos normales de 8 horas</b>. Reducimos el costo operativo drásticamente no solo por la normalización de la jornada laboral, sino por el cambio a un perfil especializado en hospitalidad, limpieza y cuidado preventivo del activo.",
                 img: "https://i.postimg.cc/DzZYKBQd/cambio-operativo-1.jpg", 
                 icon: "user-cog",
-                color: "#efa1b9"
+                color: "#a9c1ee"
+            },
+            rondero: {
+                title: "Optimización de Patrullaje",
+                text: "Reducimos el turno de rondero de <b>24 horas a 12 horas</b>, apoyándonos en nuestro ecosistema tecnológico de cámaras con IA para cubrir la vigilancia en las horas restantes. Esto optimiza el recurso humano presencial sin comprometer la seguridad perimetral.",
+                img: "https://i.postimg.cc/PJHS9GmD/turno-12-horas.jpg", 
+                icon: "shield-ellipsis",
+                color: "#a9c1ee"
             },
             jardineria: {
                 title: "Paisajismo de Bajo Costo",
-                text: "Simplificamos las áreas verdes sustituyendo plantas ornamentales de alto mantenimiento por un diseño basado en <b>prado y árboles estructurales</b>. Esto elimina la necesidad de jardinería intensiva, reduce el consumo de agua y garantiza una estética limpia de alta valorización patrimonial.",
+                text: "Simplificamos las áreas verdes sustituyendo plantas ornamentales de alto mantenimiento por un diseño basado en <b>prado y árboles estructurales</b>. Esto elimina la necesidad de jardinería intensiva y reduce la compra de insumos.",
                 img: "https://i.postimg.cc/tgT0qhGC/jardineria.jpg", 
                 icon: "leaf",
                 color: "#a9c1ee"
