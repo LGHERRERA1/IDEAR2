@@ -3,458 +3,798 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDEAR SERVICIOS - Sostenibilidad y Tecnología</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Propuesta Integral - Pomarroso Condominio Campestre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --primary: #60474e;    /* Malva profundo */
+            --secondary: #8b5e7d;  /* Ciruela */
+            --accent: #a38499;     /* Púrpura mate */
+            --slate: #475569;      /* Gris acero */
+            --light: #cecfdc;      /* Lavanda claro */
+            --pardo: #b3a29e;      /* Gris pardo */
+            --sky-blue: #ABDADC;   /* Azul Estratégico / Acero */
+            --white: #FFFFFF;
+            --offwhite: #F8FAFC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #fcf1f3;
+            background-color: #f1f5f9; 
+            color: var(--primary);
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        .font-serif-premium { font-family: 'Playfair Display', serif; }
+        .infographic-canvas { width: 100%; position: relative; }
 
-        /* TABLA PREMIUM INSTITUCIONAL */
-        .premium-table-wrapper {
-            background-color: #4d3d4a !important;
-            border-radius: 2rem;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 94%;
         }
 
-        .table-header {
-            background-color: rgba(0, 0, 0, 0.4) !important;
-            color: #ffffff !important;
+        /* --- HEADER (COVER 100VH) --- */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
         
-        .zebra-row { color: #ffffff !important; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .zebra-row:nth-child(even) { background-color: rgba(255, 255, 255, 0.04) !important; }
-
-        /* BASE DE TARJETAS */
-        .tech-card, .op-card {
-            background-color: #4d3d4a !important;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            border-radius: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.2rem;
+        .branding-row {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 320px;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            margin-bottom: 35px;
         }
 
-        /* TARJETAS TECNOLÓGICAS (ROSADO) */
-        .tech-card * { color: #fbc6d6 !important; }
-        .tech-card:hover {
-            background-color: #fbc6d6 !important; 
-            box-shadow: 0 25px 50px rgba(77, 61, 74, 0.3);
-            border-color: #e47053;
-        }
-        .tech-card:hover * { color: #4d3d4a !important; }
-
-        /* TARJETAS OPERATIVAS (AZUL #a9c1ee) */
-        .op-card * { color: #a9c1ee !important; }
-        .op-card:hover {
-            background-color: #a9c1ee !important; 
-            box-shadow: 0 25px 50px rgba(77, 61, 74, 0.3);
-            border-color: #4d3d4a;
-        }
-        .op-card:hover * { color: #4d3d4a !important; }
-
-        .icon-wrapper {
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 65px;
-            height: 65px;
-            border-radius: 1.8rem;
+        .logo-capsule {
+            background: var(--white);
+            padding: 16px 35px; 
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+            border: 3.5px solid var(--sky-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            min-width: 290px;
+            height: 140px;
+        }
+        .logo-img { height: 110px; width: auto; object-fit: contain; }
+
+        .badge { 
+            display: inline-block; padding: 12px 32px; border: 2.5px solid var(--sky-blue); 
+            color: var(--sky-blue); text-transform: uppercase; letter-spacing: 5px; 
+            font-size: 13px; font-weight: 800; margin-bottom: 22px; border-radius: 50px; 
+            background: rgba(255,255,255,0.12);
         }
 
-        .tech-card:hover .icon-wrapper, .op-card:hover .icon-wrapper {
-            background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 54px; line-height: 1.15; margin-bottom: 20px; font-weight: 900; }
+        .hero-sub { font-size: 22px; font-weight: 500; max-width: 950px; margin: 0 auto; color: var(--sky-blue); line-height: 1.5; }
 
-        /* MODAL */
-        #modal-overlay {
-            transition: opacity 0.2s ease;
-            backdrop-filter: blur(12px);
-        }
-
-        .modal-container {
-            max-width: 950px;
-            width: 92%;
-            background: white;
-            border-radius: 2.5rem;
+        /* --- ESTRUCTURA UNIFICADA (600PX) --- */
+        section { padding: 35px 0; width: 100%; display: flex; justify-content: center; }
+        
+        .section-frame {
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.6);
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-height: 92vh;
+            background: var(--white);
+            border-radius: 40px;
+            overflow: visible; 
+            box-shadow: 0 15px 40px rgba(96, 71, 78, 0.08);
+            border: 1px solid var(--pardo);
+            height: 600px; 
+            width: 100%;
+            position: relative;
         }
 
-        @media (min-width: 768px) {
-            .modal-container { flex-direction: row; height: 520px; }
-        }
-
-        .modal-visual {
-            background-color: #f1f5f9;
-            flex: 1.1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            border-bottom: 6px solid #e47053;
-            max-height: 180px;
-        }
-
-        @media (min-width: 768px) {
-            .modal-visual { border-bottom: 0; border-right: 6px solid #e47053; max-height: 100%; padding: 2rem; }
-        }
-
-        .modal-visual img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain !important;
-        }
-
-        .modal-info {
+        .frame-content {
             flex: 1;
-            padding: 1.5rem;
+            padding: 40px 60px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+        }
+
+        .frame-visual {
+            flex: 0 0 42%;
+            position: relative;
+            background: var(--offwhite);
+            overflow: hidden;
+            border-radius: 0 40px 40px 0;
+        }
+        
+        .frame-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .full-width-box { width: 100%; padding: 30px 60px; display: flex; flex-direction: column; justify-content: center; }
+
+        /* --- TÍTULOS --- */
+        .section-title { border-left: 10px solid var(--secondary); padding-left: 20px; margin-bottom: 20px; }
+        .section-title h2 { 
+            font-family: 'Playfair Display', serif; font-size: 34px !important; 
+            color: var(--primary); line-height: 1.2; font-weight: 700;
+        }
+        .section-title p { font-size: 11px; text-transform: uppercase; color: var(--secondary); font-weight: 800; letter-spacing: 5px; }
+
+        /* --- BADGE DE EXPERIENCIA (CENTREDO SUPERIOR) --- */
+        .experience-badge { 
+            position: absolute; 
+            top: -25px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: var(--primary); 
+            color: var(--white); 
+            padding: 15px 40px; 
+            border-radius: 20px; 
+            text-align: center; 
+            border: 3px solid var(--sky-blue); 
+            z-index: 50; 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            min-width: 320px;
+        }
+        .experience-badge span { display: block; font-size: 42px; font-weight: 900; line-height: 1; color: var(--sky-blue); }
+        .experience-badge label { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- MAPA GRÁFICO DE ATENCIÓN (4 NODOS) --- */
+        .attention-map-wrapper {
+            display: flex;
             justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
             position: relative;
+            margin-top: 20px;
+            gap: 15px;
         }
-
-        @media (min-width: 768px) {
-            .modal-info { padding: 2.5rem; }
-        }
-
-        .abs-close {
+        .attention-map-wrapper::before {
+            content: "";
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 20;
+            top: 55px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--light);
+            z-index: 1;
         }
-
-        /* MANIFIESTO */
-        .litho-frame {
-            border: 1px solid #4d3d4a;
+        .map-node-card {
+            flex: 1;
+            background: var(--white);
+            border: 2px solid var(--pardo);
+            border-radius: 25px;
+            padding: 25px 15px;
+            text-align: center;
             position: relative;
-            background: #ffffff;
-            padding: 3.5rem 2rem;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 380px;
+            justify-content: flex-start;
         }
-        .litho-frame::before {
-            content: '';
-            position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid #4d3d4a;
-            pointer-events: none;
-            opacity: 0.2;
+        .node-icon-hex {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--sky-blue);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+            border: 3px solid var(--white);
+        }
+        .map-node-card h4 { font-weight: 800; font-size: 15px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; line-height: 1.2; height: 36px; display: flex; align-items: center; }
+        .map-node-card .role-label { background: var(--offwhite); padding: 6px 12px; border-radius: 50px; font-weight: 800; font-size: 11px; color: var(--secondary); margin-bottom: 12px; border: 1px solid var(--light); text-transform: uppercase; }
+        .map-node-card p { font-size: 13px; color: var(--slate); line-height: 1.4; }
+
+        /* --- CALENDARIO FINANCIERO --- */
+        .financial-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; padding: 20px; }
+        .financial-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 30px;
+            border-left: 12px solid var(--sky-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .financial-card:hover { transform: scale(1.03); }
+        .financial-card h6 { color: var(--primary); font-weight: 800; letter-spacing: 2px; font-size: 14px; margin-bottom: 5px; text-transform: uppercase; }
+        .financial-card .date-val { color: var(--secondary); font-size: 52px; font-weight: 900; line-height: 1; margin-bottom: 5px; }
+        .financial-card .date-sub { color: var(--slate); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+
+        /* --- DISEÑO HORIZONTAL DE ETAPAS (FLECHAS) --- */
+        .stages-row {
+            display: flex;
+            width: 100%;
+            gap: 5px;
+            margin-top: 10px;
+            height: 280px;
+        }
+        .stage-box {
+            flex: 1;
+            position: relative;
+            padding: 35px 20px 20px 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: white;
+            clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+            transition: 0.3s ease;
+        }
+        .stage-box:first-child { clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%); padding-left: 25px; }
+        .stage-box:last-child { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 15% 50%); padding-right: 25px; }
+        .stage-box .num { font-size: 40px; font-weight: 900; opacity: 0.3; line-height: 1; margin-bottom: 15px; }
+        .stage-box h5 { font-size: 15px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .stage-box p { font-size: 12px; line-height: 1.3; }
+
+        .s1 { background-color: var(--sky-blue); color: var(--primary); }
+        .s2 { background-color: var(--accent); }
+        .s3 { background-color: var(--secondary); }
+        .s4 { background-color: var(--primary); }
+
+        /* --- SERVICIOS PÚBLICOS --- */
+        .utility-box { display: grid; gap: 10px; width: 100%; }
+        .utility-card { 
+            background: var(--offwhite); 
+            padding: 15px 25px; 
+            border-radius: 20px; 
+            border: 1px solid var(--pardo); 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .utility-icon { 
+            width: 50px; 
+            height: 50px; 
+            background: var(--primary); 
+            color: var(--sky-blue); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 20px; 
+            flex-shrink: 0; 
+        }
+        .utility-card div { flex: 1; }
+        .utility-card h5 { font-weight: 800; font-size: 16px; color: var(--primary); margin-bottom: 2px; }
+        .utility-card p { font-size: 12px; color: var(--slate); line-height: 1.3; }
+
+        /* --- REFERENCIAS --- */
+        .ref-list-simple {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+        .ref-item-box {
+            background: var(--offwhite);
+            padding: 15px 25px;
+            border-radius: 20px;
+            border-left: 8px solid var(--secondary);
+            border: 1px solid var(--pardo);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .ref-item-box i { font-size: 20px; color: var(--sky-blue); }
+        .ref-item-box h5 { font-size: 16px; font-weight: 800; color: var(--primary); font-family: 'Playfair Display', serif; }
+
+        .check-list li { margin-bottom: 10px; font-size: 15px; display: flex; align-items: flex-start; gap: 12px; }
+        .check-list i { color: var(--sky-blue); font-size: 16px; margin-top: 3px; }
+
+        footer { background: var(--primary); color: var(--white); padding: 50px 20px; text-align: center; border-top: 8px solid var(--sky-blue); }
+
+        @media (max-width: 1000px) {
+            .section-frame { height: auto; flex-direction: column; }
+            .attention-map-wrapper { flex-direction: column; align-items: center; }
+            .stages-row { flex-direction: column; height: auto; clip-path: none; gap: 10px; }
+            .stage-box { clip-path: none !important; padding: 20px !important; }
+            .ref-list-simple { grid-template-columns: 1fr; }
+            .experience-badge { min-width: auto; width: 90%; }
         }
     </style>
 </head>
-<body class="p-2 md:p-8 text-[#4d3d4a]">
+<body>
 
-    <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <header class="bg-[#4d3d4a] text-white rounded-t-[3rem] p-10 md:p-12 shadow-2xl flex flex-col md:flex-row justify-between items-center border-b-[10px] border-[#e47053]">
-            <div class="flex items-center gap-6 mb-8 md:mb-0">
-                <div class="bg-white p-4 rounded-3xl shadow-xl flex items-center justify-center transform -rotate-2">
-                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="Logo IDEAR" class="h-16 md:h-20 w-auto object-contain">
+<div class="infographic-canvas">
+    <!-- PORTADA CON AMBOS LOGOS -->
+    <header>
+        <div class="content-wrapper">
+            <div class="branding-row">
+                <div class="logo-capsule">
+                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="IDEAR SERVICIOS" class="logo-img">
                 </div>
-                <div>
-                    <h1 class="text-3xl md:text-5xl font-black tracking-tighter leading-none uppercase">IDEAR <span class="text-[#efa1b9]">SERVICIOS</span></h1>
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-[#d8adb2] font-black mt-2">Elite Residential Management</p>
+                <div class="logo-capsule">
+                    <!-- LOGO POMARROSO SVG VECTORIAL -->
+                    <svg viewBox="0 0 500 220" style="height: 115px; width: auto; display: block;">
+                      <defs>
+                        <linearGradient id="pinkBgHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#E95B9A"/>
+                          <stop offset="100%" stop-color="#DE4283"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,0 H500 V50 C380,70 280,30 180,60 C90,80 40,45 0,55 Z" fill="url(#pinkBgHeader)"/>
+                      <path d="M0,40 Q130,15 250,45 T500,35 V220 H0 Z" fill="#0D5C58"/>
+                      <g transform="translate(250, 90) scale(0.75)" fill="#F49AC2">
+                        <ellipse cx="0" cy="-35" rx="6" ry="14" />
+                        <ellipse cx="-12" cy="-30" rx="6" ry="14" transform="rotate(-20 -12 -30)"/>
+                        <ellipse cx="12" cy="-30" rx="6" ry="14" transform="rotate(20 12 -30)"/>
+                        <ellipse cx="-24" cy="-20" rx="6" ry="14" transform="rotate(-40 -24 -20)"/>
+                        <ellipse cx="24" cy="-20" rx="6" ry="14" transform="rotate(40 24 -20)"/>
+                        <ellipse cx="-32" cy="-5" rx="6" ry="14" transform="rotate(-60 -32 -5)"/>
+                        <ellipse cx="32" cy="-5" rx="6" ry="14" transform="rotate(60 32 -5)"/>
+                        <ellipse cx="-8" cy="-15" rx="5" ry="11" transform="rotate(-15 -8 -15)"/>
+                        <ellipse cx="8" cy="-15" rx="5" ry="11" transform="rotate(15 8 -15)"/>
+                        <ellipse cx="-18" cy="-8" rx="5" ry="11" transform="rotate(-35 -18 -8)"/>
+                        <ellipse cx="18" cy="-8" rx="5" ry="11" transform="rotate(35 18 -8)"/>
+                        <ellipse cx="0" cy="-20" rx="5" ry="11"/>
+                      </g>
+                      <text x="250" y="160" font-family="'Playfair Display', serif" font-size="42" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">POMARROSO</text>
+                      <text x="250" y="195" font-family="'Inter', sans-serif" font-size="18" font-weight="600" fill="#ABDADC" text-anchor="middle" letter-spacing="5">Condominio Campestre</text>
+                    </svg>
                 </div>
             </div>
-            <div class="text-center md:text-right border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-12">
-                <h2 class="text-xl font-serif italic text-[#fbc6d6]">Compromiso Patrimonial</h2>
-                <p class="text-xs text-[#d8adb2] font-medium tracking-widest uppercase">Análisis Estratégico 2026</p>
-            </div>
-        </header>
+            <div class="badge">Bienvenidos a Pomarroso Condominio Campestre</div>
+            <h1>El comienzo para construir su hogar soñado</h1>
+            <p class="hero-sub">Les damos la más cálida bienvenida. Sabemos que cada lote representa el proyecto de vida de su familia, y estamos aquí para acompañarlos desde el primer día con una gestión transparente y profesional.</p>
+        </div>
+    </header>
 
-        <main class="bg-white shadow-2xl overflow-hidden rounded-b-[3rem]">
-            
-            <!-- Contexto Cifras -->
-            <section class="p-10 md:p-20 text-center bg-gradient-to-b from-[#fbc6d6]/20 to-white">
-                <h3 class="font-serif-premium text-4xl md:text-7xl mb-10 leading-tight tracking-tight">Cifras que <span class="text-[#e47053] italic">transforman</span></h3>
-                <p class="text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed font-semibold opacity-90 border-l-8 border-[#efa1b9] pl-8 text-left">
-                    "La inflación no es el problema real; es la indexación salarial incontrolable. La brecha del 50% exige una evolución operativa inmediata."
-                </p>
-            </section>
-
-            <!-- Tabla Matriz -->
-            <section class="px-4 md:px-16 pb-20">
-                <div class="premium-table-wrapper">
-                    <div class="p-8 bg-black/10 flex items-center gap-5">
-                        <i data-lucide="bar-chart-4" class="text-[#efa1b9] w-8 h-8"></i>
-                        <h4 class="text-white font-serif-premium italic text-2xl tracking-tight uppercase text-center">Matriz de Desviación Salarial</h4>
+    <!-- SLIDE 1: ADMINISTRACIÓN PROVISIONAL -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-content">
+                    <div class="section-title">
+                        <h2>1. Administración Provisional</h2>
                     </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse min-w-[800px]">
-                            <thead>
-                                <tr class="table-header">
-                                    <th class="p-6 text-[11px] font-black uppercase tracking-[0.3em] text-center border-r border-white/10">Año</th>
-                                    <th class="p-6 text-base font-bold text-right">SMMLV Real (COP)</th>
-                                    <th class="p-6 text-base font-bold text-right text-[#a9c1ee]">💡 SMLMV con IPC</th>
-                                    <th class="p-6 text-base font-bold text-right text-[#efa1b9]">Diferencia %</th>
-                                    <th class="p-6 text-base font-bold text-right text-white">IPC (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2021</td><td class="p-5 text-right font-medium">$ 908.526</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 908.526</td><td class="p-5 text-right">—</td><td class="p-5 text-right">—</td></tr>
-                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2022</td><td class="p-5 text-right font-medium">$ 999.379</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.027.725</td><td class="p-5 text-right">10,00%</td><td class="p-5 text-right opacity-60">13,12%</td></tr>
-                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2023</td><td class="p-5 text-right font-medium">$ 1.159.279</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.123.097</td><td class="p-5 text-right">16,00%</td><td class="p-5 text-right opacity-60">9,28%</td></tr>
-                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2024</td><td class="p-5 text-right font-medium">$ 1.299.204</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.181.499</td><td class="p-5 text-right">12,07%</td><td class="p-5 text-right opacity-60">5,20%</td></tr>
-                                <tr class="zebra-row"><td class="p-5 text-center font-black text-[#efa1b9]">2025</td><td class="p-5 text-right font-medium">$ 1.422.629</td><td class="p-5 text-right italic text-[#a9c1ee]">$ 1.244.118</td><td class="p-5 text-right">9,50%</td><td class="p-5 text-right opacity-60">5,30%</td></tr>
-                                <tr class="zebra-row bg-white/5"><td class="p-5 text-center font-black text-[#e47053] text-lg">2026</td><td class="p-5 text-right font-black text-[#4d3d4a] text-2xl">$ 1.759.792</td><td class="p-5 text-right italic text-[#a9c1ee] font-black">$ 1.308.812</td><td class="p-5 text-right text-[#e47053] font-black text-2xl">23,70%</td><td class="p-5 text-right font-black text-[#4d3d4a]">5,20%</td></tr>
-                                <tr class="bg-black/30 text-white">
-                                    <td class="p-10 font-black uppercase text-center border-r border-white/5 tracking-tighter">Impacto</td>
-                                    <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter text-white">194%</td>
-                                    <td class="p-10 text-5xl md:text-7xl font-black text-right tracking-tighter text-[#a9c1ee]">144%</td>
-                                    <td colspan="2" class="p-10 text-center">
-                                        <div class="bg-[#e47053] text-white px-8 py-4 rounded-2xl font-black text-lg inline-flex items-center gap-3 shadow-2xl border-2 border-white/20">
-                                            <i data-lucide="zap" class="w-8 h-8 fill-white"></i> SOBRECOSTO: +50%
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Propósito -->
-            <section class="p-8 md:p-24 bg-white border-t border-slate-100">
-                <div class="max-w-5xl mx-auto mb-20">
-                    <div class="litho-frame text-center shadow-xl">
-                        <h4 class="font-serif-premium italic text-4xl md:text-6xl text-[#4d3d4a] mb-10 leading-none">El balance entre <br><span class="text-[#e47053] font-black not-italic uppercase tracking-tighter">automatizar y humanizar</span></h4>
-                        <p class="text-xl md:text-3xl font-serif italic text-[#4d3d4a] mb-12 opacity-80">"La tecnología no sustituye el valor humano; lo libera para lo extraordinario."</p>
-                        <div class="w-32 h-1 bg-[#4d3d4a] mx-auto mb-10"></div>
-                        <p class="text-lg md:text-2xl leading-relaxed font-medium text-[#4d3d4a] max-w-4xl mx-auto">
-                            Delegamos las tareas mecánicas y de alto riesgo financiero a sistemas inteligentes para que las personas puedan concentrarse exclusivamente en donde aportan valor real: <span class="border-b-4 border-[#efa1b9] font-bold">la hospitalidad, el criterio profesional y la gestión humana de alto nivel.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="text-center mb-16 px-4">
-                    <h3 class="font-serif-premium italic text-4xl text-[#4d3d4a] mb-4">Ecosistema Tecnológico de Vanguardia</h3>
-                    <p class="text-[#ac7e8a] font-black uppercase tracking-[0.4em] text-xs">Arquitectura de soluciones para un patrimonio blindado</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-0">
-                    <div onclick="openModal('perimetro')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper"><i data-lucide="shield-check" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Cercos Virtuales</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Protección perimetral inteligente con analítica activa de video e IA.</p>
-                    </div>
-                    <div onclick="openModal('porteria')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper"><i data-lucide="monitor-dot" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Portería Virtual</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Gestión remota HD que optimiza drásticamente el costo operativo fijo.</p>
-                    </div>
-                    <div onclick="openModal('acceso')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper"><i data-lucide="scan-face" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Acceso Biométrico</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Terminales faciales 4.0 para un flujo residencial libre de fricciones.</p>
-                    </div>
-                    <div onclick="openModal('lockers')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper"><i data-lucide="package" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Smart Lockers</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Autogestión de paquetería 24/7 que garantiza seguridad y privacidad total.</p>
-                    </div>
-                    <div onclick="openModal('sensores')" class="tech-card group shadow-lg">
-                        <div class="icon-wrapper"><i data-lucide="bell-ring" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Prevención IOT</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Sensores de gas e inundación para una detección técnica proactiva.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ECOSISTEMA OPERATIVO (AZUL) -->
-            <section class="p-8 md:p-24 bg-[#a9c1ee]/10 border-t border-slate-100">
-                <div class="text-center mb-16 px-4">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#4d3d4a] mb-4 block">Evolución del Servicio</span>
-                    <h3 class="font-serif-premium italic text-4xl md:text-5xl text-[#4d3d4a] mb-6">Ecosistema Operativo Eficiente</h3>
-                    <p class="text-lg md:text-xl text-[#4d3d4a] max-w-3xl mx-auto leading-relaxed font-medium opacity-80">
-                        Repensamos la logística presencial para transformar el gasto en <span class="text-[#ac7e8a] font-bold">inversión en bienestar</span>.
+                    <p style="font-size: 14px; color: var(--slate); text-align: justify; margin-bottom: 18px;">
+                        En cumplimiento de la <strong>Ley 675 de 2001</strong>, la gestión inicial de <strong>Pomarroso Condominio Campestre</strong> es ejercida bajo el rol de <strong>Administradora Provisional</strong> nombrada por la constructora.
                     </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-0">
-                    <!-- Optimización Personal -->
-                    <div onclick="openModal('oficios')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
-                        <div class="icon-wrapper"><i data-lucide="user-cog" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Optimización de Perfil</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Migración de vigilantes de 12h a auxiliares de oficios varios de 8h: ahorro drástico por jornada y perfil.</p>
-                    </div>
-                    <!-- Eficiencia Patrullaje -->
-                    <div onclick="openModal('rondero')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
-                        <div class="icon-wrapper"><i data-lucide="shield-ellipsis" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Eficiencia en Patrullaje</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Reducción del rondero de 24h a 12h, delegando la supervisión nocturna a la analítica inteligente.</p>
-                    </div>
-                    <!-- Simplificación Jardinería -->
-                    <div onclick="openModal('jardineria')" class="op-card group shadow-lg border-2 border-[#a9c1ee]/40">
-                        <div class="icon-wrapper"><i data-lucide="leaf" class="w-9 h-9"></i></div>
-                        <h4 class="font-serif-premium italic text-2xl mb-4">Paisajismo Sostenible</h4>
-                        <p class="font-serif-premium italic text-lg leading-relaxed opacity-90">Evolución hacia jardines de bajo mantenimiento basados en prado y árboles estructurales.</p>
+                    <div style="display: grid; gap: 10px;">
+                        <div style="background: var(--offwhite); padding: 12px 18px; border-radius: 14px; border-left: 6px solid var(--secondary); border: 1px solid var(--pardo); font-size: 13px;">
+                            <strong><i class="fa-solid fa-scale-balanced" style="color:var(--secondary); margin-right: 8px;"></i> Operación Activa sin Consejo:</strong> Aunque aún no se ha conformado el Consejo de Administración, la copropiedad cuenta con una administración formal dedicada a garantizar el funcionamiento y cuidado de los bienes comunes.
+                        </div>
+                        <div style="background: var(--offwhite); padding: 12px 18px; border-radius: 14px; border-left: 6px solid var(--sky-blue); border: 1px solid var(--pardo); font-size: 13px;">
+                            <strong><i class="fa-solid fa-file-invoice-dollar" style="color:var(--primary); margin-right: 8px;"></i> Presupuesto y Cuota Provisional:</strong> Se estructuró e implementó un presupuesto operativo provisional y se estableció la cuota de administración necesaria para soportar los gastos iniciales.
+                        </div>
+                        <div style="background: var(--offwhite); padding: 12px 18px; border-radius: 14px; border-left: 6px solid var(--secondary); border: 1px solid var(--pardo); font-size: 13px;">
+                            <strong><i class="fa-solid fa-layer-group" style="color:var(--secondary); margin-right: 8px;"></i> Cobertura del 100% de Lotes:</strong> La cuota de administración aplica para la totalidad de los lotes del condominio, cubriendo tanto los lotes adquiridos por propietarios como los que continúan en poder de la constructora.
+                        </div>
+                        <div style="background: var(--offwhite); padding: 12px 18px; border-radius: 14px; border-left: 6px solid var(--sky-blue); border: 1px solid var(--pardo); font-size: 13px;">
+                            <strong><i class="fa-solid fa-calendar-check" style="color:var(--primary); margin-right: 8px;"></i> Cobro Proporcional:</strong> El recaudo y facturación se realizan de manera estrictamente proporcional a la fecha de entrega de cada inmueble.
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="p-12 md:p-20 bg-[#4d3d4a] text-white rounded-b-[3rem] text-center">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                    <div class="flex flex-col items-center opacity-70"><i data-lucide="info" class="mb-4 text-[#efa1b9]"></i><span class="text-xs uppercase font-black tracking-widest">Consultoría PH</span></div>
-                    <div class="flex flex-col items-center opacity-70"><i data-lucide="shield" class="mb-4 text-[#e47053]"></i><span class="text-xs uppercase font-black tracking-widest">Mitigación Riesgo</span></div>
-                    <div class="flex flex-col items-center opacity-70"><i data-lucide="trending-up" class="mb-4 text-[#a9c1ee]"></i><span class="text-xs uppercase font-black tracking-widest">Valorización Real</span></div>
+                <div class="frame-visual">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000" alt="Administración Provisional Pomarroso Condominio Campestre">
                 </div>
-                <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.6em] text-slate-500 gap-6">
-                    <p>IDEAR SERVICIOS © 2026</p>
-                    <p class="text-white hover:text-[#efa1b9] transition-colors cursor-pointer uppercase">info@idearservicios.com</p>
-                </div>
-            </footer>
-        </main>
-    </div>
-
-    <!-- MODAL SYSTEM -->
-    <div id="modal-overlay" class="fixed inset-0 bg-[#4d3d4a]/98 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4" onclick="closeModal()">
-        <div class="modal-container" onclick="event.stopPropagation()">
-            <div class="modal-visual">
-                <img id="modal-img" src="" alt="Demostración">
             </div>
-            <div class="modal-info">
-                <div class="abs-close">
-                    <button onclick="closeModal()" class="text-slate-400 hover:text-[#e47053] transition-colors">
-                        <i data-lucide="x-circle" class="w-8 h-8 md:w-10 md:h-10"></i>
-                    </button>
-                </div>
-                
-                <div class="flex flex-col h-full">
-                    <div class="flex items-center gap-4 mb-3 md:mb-5 pt-2">
-                        <div id="modal-icon-bg" class="p-2.5 md:p-3 rounded-2xl shadow-lg text-white shrink-0"></div>
-                        <h4 id="modal-title" class="font-serif-premium italic text-xl md:text-3xl text-[#4d3d4a] leading-none"></h4>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: PERFIL PROFESIONAL -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="experience-badge"><span>20</span><label>AÑOS DE APRENDIZAJE</label></div>
+                <div class="frame-content">
+                    <div class="section-title"><p>Propuesta Estratégica - Liderazgo Senior</p><h2>2. Perfil Profesional</h2></div>
+                    <p style="text-align: justify; margin-bottom: 15px;">
+                        <strong>Andrea Celina García Montañez</strong>. Soy Contadora Pública y con diplomado en propiedad horizontal de la Universidad San Buenaventura Cali con una trayectoria sólida de 20 años.
+                    </p>
+                    <p style="font-size: 15px; color: var(--slate); border-left: 5px solid var(--sky-blue); padding-left: 15px; margin-bottom: 20px;">
+                        <em>"Por ética profesional, el servicio contable es desarrollado por un profesional externo bajo mis lineamientos estratégicos."</em>
+                    </p>
+                    <div style="background: var(--offwhite); padding: 15px; border-radius: 15px; border: 1px solid var(--pardo); font-size: 14px;">
+                        <p><strong><i class="fa-solid fa-check" style="color:var(--secondary)"></i> Persona Natural:</strong> Andrea Celina García Montañez</p>
+                        <p><strong><i class="fa-solid fa-check" style="color:var(--secondary)"></i> Persona Jurídica:</strong> Idear Servicios S.A.S.</p>
                     </div>
-                    
-                    <div id="modal-text" class="text-[13px] md:text-lg text-[#4d3d4a] leading-relaxed font-medium border-l-4 border-[#efa1b9] pl-4 md:pl-6 mb-4"></div>
-                    
-                    <div class="mt-auto">
-                        <button onclick="closeModal()" class="w-full py-3 md:py-4 bg-[#4d3d4a] text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-xl shadow-xl hover:bg-[#e47053] active:scale-95 transition-all">
-                            Regresar al Informe
-                        </button>
+                </div>
+                <div class="frame-visual">
+                    <img src="https://i.postimg.cc/FsL3bjqF/pexels-thirdman-5583258.jpg" alt="Andrea Celina García Montañez">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: METODOLOGÍA -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+                <div class="frame-content" style="color: white; text-align: center; align-items: center;">
+                    <div class="section-title" style="border-left-color: var(--sky-blue); text-align: left; align-self: flex-start;">
+                        <p style="color: var(--sky-blue)">Visión</p>
+                        <h2 style="color: white;">3. Metodología de Administración</h2>
+                    </div>
+                    <p style="font-size: 22px; margin-bottom: 40px; font-weight: 300; background: rgba(0,0,0,0.15); padding: 25px; border-radius: 25px;">
+                        Trabajo sinérgico <strong>junto con el Consejo</strong> para elevar el bienestar y asegurar la <strong>valorización del patrimonio</strong> de los propietarios.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4);"><i class="fa-solid fa-handshake-simple" style="color: var(--sky-blue); font-size: 32px; margin-bottom: 10px;"></i><h5 style="font-size: 20px; font-weight: 800;">Sinergia</h5></div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4);"><i class="fa-solid fa-heart-pulse" style="color: var(--sky-blue); font-size: 32px; margin-bottom: 10px;"></i><h5 style="font-size: 20px; font-weight: 800;">Bienestar</h5></div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4);"><i class="fa-solid fa-gem" style="color: var(--sky-blue); font-size: 32px; margin-bottom: 10px;"></i><h5 style="font-size: 20px; font-weight: 800;">Patrimonio</h5></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        lucide.createIcons();
+    <!-- SLIDE 4: ESQUEMA DE ATENCIÓN -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="full-width-box">
+                    <div class="section-title"><p>Soporte 360°</p><h2>4. Esquema de Atención Integral</h2></div>
+                    <div class="attention-map-wrapper">
+                        <div class="map-node-card">
+                            <div class="node-icon-hex"><i class="fa-solid fa-business-time"></i></div>
+                            <h4>Atención Administrativa</h4>
+                            <div class="role-label">Soporte L-V</div>
+                            <p style="text-align: left; margin-top: 5px;">• Presencia Lunes a Viernes<br>• Atención a Residentes<br>• Supervisión de personal<br>• Recorridos de inspección</p>
+                        </div>
+                        <div class="map-node-card" style="background: #fdfafb; border-color: var(--secondary);">
+                            <div class="node-icon-hex" style="background: var(--secondary); color: white;"><i class="fa-solid fa-user-tie"></i></div>
+                            <h4>Gerencia Estratégica</h4>
+                            <div class="role-label" style="background: var(--secondary); color: white;">Supervisión PH</div>
+                            <p><strong>Andrea Celina García Montañez</strong></p>
+                            <p>Liderazgo técnico y estratégico. Supervisión permanente de la gestión operativa y financiera para asegurar la valorización patrimonial.</p>
+                        </div>
+                        <div class="map-node-card" style="border-color: #c0392b;">
+                            <div class="node-icon-hex" style="background:#c0392b"><i class="fa-solid fa-phone-volume"></i></div>
+                            <h4>Emergencias</h4>
+                            <div class="role-label" style="color:#c0392b">Protocolo 24/7</div>
+                            <p>Respuesta inmediata vía vigilancia, Contratos con especialistas y protocolos de escalamiento.</p>
+                        </div>
+                        <div class="map-node-card">
+                            <div class="node-icon-hex"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <h4>Canales Digitales</h4>
+                            <div class="role-label">Omnicanal</div>
+                            <p>WhatsApp Business, Correo Corporativo y <strong>Axesa App</strong> para PQRS y reservas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        const techContent = {
-            perimetro: {
-                title: "Cercos de Protección IA",
-                text: "Detectamos intrusiones reales mediante <b>barreras invisibles de video-analítica</b>. La IA diferencia humanos de animales, activando alertas instantáneas en nuestra central SOC sin guardias físicos.",
-                img: "https://i.postimg.cc/ry7gmvvp/cerco-virtual4.jpg", 
-                icon: "shield-check",
-                color: "#ac7e8a"
-            },
-            porteria: {
-                title: "Portería Virtual IP",
-                text: "Sustituimos la nómina costosa por un sistema de <b>intercomunicación HD atendida por expertos</b> desde una central blindada. Ofrece seguridad absoluta y atención profesional 24/7.",
-                img: "https://i.postimg.cc/HkRwL5Jr/porteria-virtual3.jpg", 
-                icon: "monitor-dot",
-                color: "#efa1b9"
-            },
-            acceso: {
-                title: "Acceso Biométrico 4.0",
-                text: "Hardware de última tecnología para entrada manos libres de residentes. Los visitantes reciben <b>códigos QR temporales</b>. El sistema garantiza control total y bitácoras inalterables.",
-                img: "https://i.postimg.cc/V6GLY9vz/acceso-biometrico.jpg", 
-                icon: "scan-face",
-                color: "#a9c1ee"
-            },
-            lockers: {
-                title: "Smart Lockers",
-                text: "Gabinete inteligente que gestiona sus entregas 24/7. El mensajero deposita de forma autónoma y usted retira con un PIN único. <b>Eficiencia total</b> que protege su privacidad.",
-                img: "https://i.postimg.cc/YS2vMCRk/smart-lockers.jpg", 
-                icon: "package",
-                color: "#e47053"
-            },
-            sensores: {
-                title: "Prevención Activa IOT",
-                text: "Sensores inalámbricos de gas, humo e inundación. La tecnología reacciona ante el primer síntoma, notificando a la central y <b>previniendo daños catastróficos</b> a la infraestructura común.",
-                img: "https://i.postimg.cc/NfPJ1K9q/detectores-gas.jpg", 
-                icon: "bell-ring",
-                color: "#ac7e8a"
-            },
-            oficios: {
-                title: "Eficiencia de Perfil y Turno",
-                text: "Realizamos la transición estratégica de <b>vigilantes de 12 horas</b> por <b>auxiliares de oficios varios en turnos normales de 8 horas</b>. Reducimos el costo operativo drásticamente no solo por la normalización de la jornada laboral, sino por el cambio a un perfil especializado en hospitalidad, limpieza y cuidado preventivo del activo.",
-                img: "https://i.postimg.cc/DzZYKBQd/cambio-operativo-1.jpg", 
-                icon: "user-cog",
-                color: "#a9c1ee"
-            },
-            rondero: {
-                title: "Optimización de Patrullaje",
-                text: "Reducimos el turno de rondero de <b>24 horas a 12 horas</b>, apoyándonos en nuestro ecosistema tecnológico de cámaras con IA para cubrir la vigilancia en las horas restantes. Esto optimiza el recurso humano presencial sin comprometer la seguridad perimetral.",
-                img: "https://i.postimg.cc/PJHS9GmD/turno-12-horas.jpg", 
-                icon: "shield-ellipsis",
-                color: "#a9c1ee"
-            },
-            jardineria: {
-                title: "Paisajismo de Bajo Costo",
-                text: "Simplificamos las áreas verdes sustituyendo plantas ornamentales de alto mantenimiento por un diseño basado en <b>prado y árboles estructurales</b>. Esto elimina la necesidad de jardinería intensiva y reduce la compra de insumos.",
-                img: "https://i.postimg.cc/tgT0qhGC/jardineria.jpg", 
-                icon: "leaf",
-                color: "#a9c1ee"
-            }
-        };
+    <!-- SLIDE 5: MANEJO FINANCIERO -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame" style="background: var(--primary);">
+                <div class="frame-content" style="color: white; padding-right: 50px;">
+                    <div class="section-title" style="border-left-color: var(--sky-blue);"><p style="color: var(--sky-blue)">Arquitectura Contable</p><h2 style="color: white;">5. Manejo Financiero</h2></div>
+                    <p style="font-size: 18px; margin-bottom: 25px; opacity: 0.9; line-height: 1.4;">Nuestra gestión contable genera información estratégica para la toma de decisiones del Consejo.</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check-double" style="font-size: 20px; color: var(--sky-blue);"></i> Registro contable conforme a normas <strong>NIIF</strong>.</li>
+                        <li><i class="fa-solid fa-check-double" style="font-size: 20px; color: var(--sky-blue);"></i> Control de pagos bajo cronograma de Tesorería.</li>
+                        <li><i class="fa-solid fa-check-double" style="font-size: 20px; color: var(--sky-blue);"></i> Conciliaciones bancarias y monitoreo de flujos.</li>
+                        <li><i class="fa-solid fa-check-double" style="font-size: 20px; color: var(--sky-blue);"></i> Informes enviados 3 días antes de cada Consejo.</li>
+                    </ul>
+                </div>
+                <div class="frame-visual" style="background: rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: center;">
+                    <div class="financial-grid">
+                        <div class="financial-card">
+                            <h6>Emisión de Recibos</h6>
+                            <div class="date-val">Día 05</div>
+                            <div class="date-sub">Facturación Mensual</div>
+                        </div>
+                        <div class="financial-card">
+                            <h6>Cierre y Balances</h6>
+                            <div class="date-val">Día 20</div>
+                            <div class="date-sub">Entrega de Estados Financieros</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function openModal(id) {
-            const data = techContent[id];
-            const overlay = document.getElementById('modal-overlay');
-            const container = overlay.querySelector('.modal-container');
-            const imgEl = document.getElementById('modal-img');
-            
-            imgEl.style.opacity = '0';
-            imgEl.src = data.img;
-            imgEl.onload = () => imgEl.style.opacity = '1';
+    <!-- SLIDE 6: CONTROL DE PROVEEDORES Y CONTRATOS -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-visual"><img src="https://i.postimg.cc/hj2ByyCy/pexels-shkrabaanthony-5816283.jpg" alt="Proveedores"></div>
+                <div class="frame-content">
+                    <div class="section-title"><p>Vigilancia Técnica</p><h2>6. Control de Proveedores y Contratos</h2></div>
+                    <p style="font-size: 15px; margin-bottom: 20px; text-align: justify; color: var(--slate);">
+                        Establecemos un plan con cronograma definido bajo revisión física diaria. Para autorización de pagos, los proveedores deben anexar informes detallados de actividades.
+                    </p>
+                    <div style="display: grid; gap: 10px;">
+                        <div style="background: var(--offwhite); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--pardo); font-size: 14px;">
+                            <i class="fa-solid fa-clipboard-check" style="color:var(--secondary)"></i> Seguimiento y revisión física diaria.
+                        </div>
+                        <div style="background: var(--offwhite); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--pardo); font-size: 14px;">
+                            <i class="fa-solid fa-file-invoice" style="color:var(--secondary)"></i> Informes físicos para autorización de pagos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-text').innerHTML = data.text;
-            
-            const iconBg = document.getElementById('modal-icon-bg');
-            iconBg.style.backgroundColor = data.color;
-            iconBg.innerHTML = `<i data-lucide="${data.icon}" class="w-6 h-6 md:w-8 h-8"></i>`;
-            
-            overlay.classList.remove('pointer-events-none');
-            overlay.classList.add('opacity-100');
-            container.style.transform = "scale(1)";
-            
-            lucide.createIcons();
-        }
+    <!-- SLIDE 7: MANEJO DE CARTERA -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="full-width-box">
+                    <div class="section-title" style="text-align: center; border-left: none; padding-left: 0; margin-bottom: 40px;">
+                        <p style="letter-spacing: 5px;">Recaudo Efectivo</p>
+                        <h2 style="font-size: 44px !important;">7. Gestión de Cobro & Cartera</h2>
+                    </div>
+                    <div class="stages-row">
+                        <div class="stage-box s1"><div class="num">01</div><h5>Facturación</h5><p>Día 05: Envío masivo e identificación inicial.</p></div>
+                        <div class="stage-box s2"><div class="num">02</div><h5>Seguimiento</h5><p>Día 15: Gestión persuasiva y recordatorios.</p></div>
+                        <div class="stage-box s3"><div class="num">03</div><h5>Mora Crítica</h5><p>2+ Cuotas: Suspensión de áreas sociales.</p></div>
+                        <div class="stage-box s4"><div class="num">04</div><h5>Cobro Jurídico</h5><p>3+ Cuotas: Traslado a abogados especializados.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function closeModal() {
-            const overlay = document.getElementById('modal-overlay');
-            const container = overlay.querySelector('.modal-container');
-            
-            overlay.classList.add('pointer-events-none');
-            overlay.classList.remove('opacity-100');
-            container.style.transform = "scale(0.95)";
-        }
-    </script>
+    <!-- SLIDE 8: GESTIÓN DE MANTENIMIENTO -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-visual"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" alt="Ingeniería"></div>
+                <div class="frame-content">
+                    <div class="section-title"><p>Gestión de Activos</p><h2>8. Gestión de Mantenimiento</h2></div>
+                    <p style="font-size: 14px; color: var(--slate); text-align: justify; margin-bottom: 15px;">
+                        Se establece desde el recibo de la copropiedad, mediante un recorrido general para validar el estado de los bienes comunes. Se realizan reuniones con proveedores existentes o se solicita concepto técnico para definir contratos, identificar vida útil y determinar necesidades preventivas o correctivas.
+                    </p>
+                    <p style="font-size: 14px; color: var(--slate); text-align: justify; margin-bottom: 20px;">
+                        Con base en ello, se realizan las cotizaciones necesarias para ser presentadas al Consejo y definir su ejecución con cargo al presupuesto aprobado o mediante cuota extraordinaria.
+                    </p>
+                    <div style="display: grid; gap: 10px;">
+                        <div style="background: var(--offwhite); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--pardo); font-size: 13px;">
+                            <i class="fa-solid fa-clipboard-list" style="color:var(--secondary)"></i> Diagnóstico técnico inicial de bienes comunes.
+                        </div>
+                        <div style="background: var(--primary); padding: 12px 20px; border-radius: 12px; color: white; font-size: 13px;">
+                            <i class="fa-solid fa-file-invoice-dollar" style="color:var(--sky-blue)"></i> Planeación financiera para ejecución.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: GESTIÓN DE SERVICIOS PÚBLICOS -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-content">
+                    <div class="section-title"><p>Sostenibilidad</p><h2>9. Gestión de Servicios Públicos</h2></div>
+                    <div class="utility-box">
+                        <div class="utility-card">
+                            <div class="utility-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <h5>Energía Eléctrica</h5>
+                                <p>Protocolos de alta eficiencia para reducir costos operativos y optimizar el consumo en áreas comunes.</p>
+                            </div>
+                        </div>
+                        <div class="utility-card">
+                            <div class="utility-icon"><i class="fa-solid fa-droplet"></i></div>
+                            <div>
+                                <h5>Recursos Hídricos</h5>
+                                <p>Detección temprana de fugas, auditoría de facturación y optimización técnica de sistemas de riego.</p>
+                            </div>
+                        </div>
+                        <div class="utility-card">
+                            <div class="utility-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div>
+                                <h5>Gestión de Residuos</h5>
+                                <p>Plan integral de manejo ambiental para la reducción de tarifas y fomento de la cultura de reciclaje.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-visual"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1000" alt="Recursos"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: ATENCIÓN DE QUEJAS Y CONVIVENCIA -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="full-width-box" style="text-align: center;">
+                    <div class="section-title" style="display: inline-block; text-align: left; margin: 0 auto 30px auto; border-left: 15px solid var(--secondary); padding-left: 30px;">
+                        <p>Armonía & Paz</p>
+                        <h2 style="font-size: 40px !important;">10. Atención de Quejas y Convivencia</h2>
+                    </div>
+                    <p style="font-size: 24px; margin-bottom: 45px; max-width: 900px; margin-left: auto; margin-right: auto; font-weight: 500; line-height: 1.6;">
+                        Gestión profesional basada en la mediación directa y el cumplimiento estricto del Reglamento Interno para garantizar una adecuada convivencia y el bienestar de los residentes bajo la Ley 675.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 40px; width: 100%;">
+                        <div style="background: var(--offwhite); padding: 25px 40px; border-radius: 20px; border: 2px solid var(--pardo); flex: 1;">
+                            <i class="fa-solid fa-handshake-angle" style="font-size: 36px; color: var(--secondary); margin-bottom: 10px;"></i>
+                            <h5 style="font-size: 18px; font-weight: 800;">Mediación Directa</h5>
+                        </div>
+                        <div style="background: var(--offwhite); padding: 25px 40px; border-radius: 20px; border: 2px solid var(--pardo); flex: 1;">
+                            <i class="fa-solid fa-gavel" style="font-size: 36px; color: var(--secondary); margin-bottom: 10px;"></i>
+                            <h5 style="font-size: 18px; font-weight: 800;">Debido Proceso</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 11: PREPARACIÓN Y DESARROLLO DE ASAMBLEAS -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-content">
+                    <div class="section-title"><p>Logística Legal</p><h2>11. Preparación y Desarrollo de Asambleas</h2></div>
+                    <p style="font-size: 16px; margin-bottom: 20px; color: var(--slate); text-align: justify;">
+                        Realizadas conforme a la Ley 675 de 2001. La información se envía con la debida anticipación para facilitar observaciones previas y asegurar reuniones de carácter gerencial.
+                    </p>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: var(--offwhite); padding: 15px 25px; border-radius: 15px; border: 1px solid var(--pardo);">
+                            <h5 style="font-size:16px; font-weight: 800; color: var(--secondary);"><i class="fa-solid fa-clock-rotate-left"></i> Anticipación Estratégica</h5>
+                        </div>
+                        <div style="background: var(--offwhite); padding: 15px 25px; border-radius: 15px; border: 1px solid var(--pardo);">
+                            <h5 style="font-size:16px; font-weight: 800; color: var(--secondary);"><i class="fa-solid fa-laptop-file"></i> Soporte Presencial o Virtual</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-visual"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" alt="Asamblea"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 12: MANEJO DOCUMENTAL -->
+    <section>
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-visual"><img src="https://i.postimg.cc/6qq9tfsx/pexels-n-voitkevich-8062362.jpg" alt="Digital"></div>
+                <div class="frame-content" style="background: var(--primary);">
+                    <div class="section-title" style="border-left-color: var(--sky-blue);"><p style="color: var(--sky-blue)">Ecosistema Digital</p><h2 style="color: white;">12. Manejo Documental</h2></div>
+                    <p style="color: white; font-size: 19px; margin-bottom: 25px; font-weight: 300;">Gestión 100% digital basada en <strong>Dropbox Business</strong>, garantizando acceso inmediato a la información.</p>
+                    <ul class="check-list" style="color: white;">
+                        <li><i class="fa-solid fa-cloud-arrow-up"></i> Disponibilidad histórica 24/7.</li>
+                        <li><i class="fa-solid fa-folder-tree"></i> Categorización técnica por años.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 13: REFERENCIAS -->
+    <section class="bg-alt">
+        <div class="content-wrapper">
+            <div class="section-frame">
+                <div class="frame-content">
+                    <div class="section-title"><p>Trayectoria</p><h2>13. Copropiedades Administradas</h2></div>
+                    <div class="ref-list-simple">
+                        <div class="ref-item-box"><i class="fa-solid fa-building"></i><h5>Altos de la Colina</h5></div>
+                        <div class="ref-item-box"><i class="fa-solid fa-building"></i><h5>Reserva de la Rivera</h5></div>
+                        <div class="ref-item-box"><i class="fa-solid fa-building"></i><h5>Golf Club</h5></div>
+                        <div class="ref-item-box"><i class="fa-solid fa-building"></i><h5>Parcelación Arboleda de Santa Bárbara</h5></div>
+                        <div class="ref-item-box" style="border-left-color: var(--sky-blue);"><i class="fa-solid fa-building-circle-check"></i><h5>Edificio Avenida 100</h5></div>
+                    </div>
+                </div>
+                <div class="frame-visual"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Trayectoria"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="content-wrapper">
+            <div class="branding-row" style="margin-bottom: 30px;">
+                <div class="logo-capsule">
+                    <img src="https://i.postimg.cc/1ttP8hhZ/logo-idear.png" alt="IDEAR SERVICIOS" class="logo-img">
+                </div>
+                <div class="logo-capsule">
+                    <!-- LOGO POMARROSO SVG VECTORIAL -->
+                    <svg viewBox="0 0 500 220" style="height: 100px; width: auto; display: block;">
+                      <defs>
+                        <linearGradient id="pinkBgFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#E95B9A"/>
+                          <stop offset="100%" stop-color="#DE4283"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,0 H500 V50 C380,70 280,30 180,60 C90,80 40,45 0,55 Z" fill="url(#pinkBgFooter)"/>
+                      <path d="M0,40 Q130,15 250,45 T500,35 V220 H0 Z" fill="#0D5C58"/>
+                      <g transform="translate(250, 90) scale(0.75)" fill="#F49AC2">
+                        <ellipse cx="0" cy="-35" rx="6" ry="14" />
+                        <ellipse cx="-12" cy="-30" rx="6" ry="14" transform="rotate(-20 -12 -30)"/>
+                        <ellipse cx="12" cy="-30" rx="6" ry="14" transform="rotate(20 12 -30)"/>
+                        <ellipse cx="-24" cy="-20" rx="6" ry="14" transform="rotate(-40 -24 -20)"/>
+                        <ellipse cx="24" cy="-20" rx="6" ry="14" transform="rotate(40 24 -20)"/>
+                        <ellipse cx="-32" cy="-5" rx="6" ry="14" transform="rotate(-60 -32 -5)"/>
+                        <ellipse cx="32" cy="-5" rx="6" ry="14" transform="rotate(60 32 -5)"/>
+                        <ellipse cx="-8" cy="-15" rx="5" ry="11" transform="rotate(-15 -8 -15)"/>
+                        <ellipse cx="8" cy="-15" rx="5" ry="11" transform="rotate(15 8 -15)"/>
+                        <ellipse cx="-18" cy="-8" rx="5" ry="11" transform="rotate(-35 -18 -8)"/>
+                        <ellipse cx="18" cy="-8" rx="5" ry="11" transform="rotate(35 18 -8)"/>
+                        <ellipse cx="0" cy="-20" rx="5" ry="11"/>
+                      </g>
+                      <text x="250" y="160" font-family="'Playfair Display', serif" font-size="42" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">POMARROSO</text>
+                      <text x="250" y="195" font-family="'Inter', sans-serif" font-size="18" font-weight="600" fill="#ABDADC" text-anchor="middle" letter-spacing="5">Condominio Campestre</text>
+                    </svg>
+                </div>
+            </div>
+            <h2 style="color:white; font-size:32px; font-family: 'Playfair Display'; margin-bottom: 10px;">Excelencia en Gestión de Propiedad Horizontal</h2>
+            <p style="opacity:0.95; font-size:13px; text-transform:uppercase; letter-spacing:5px; color: var(--sky-blue); font-weight: 900;">Andrea Celina García Montañez | Contadora USB | Especialista P.H.</p>
+        </div>
+    </footer>
+
+    <!-- PRESENTACIÓN INDEPENDIENTE: ORDEN DEL DÍA -->
+    <section style="background: linear-gradient(135deg, #2b1f24 0%, #473239 100%); padding: 50px 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; border-top: 10px solid var(--sky-blue);">
+        <div class="content-wrapper">
+            <div style="background: rgba(255,255,255,0.05); border: 2px solid var(--sky-blue); border-radius: 35px; padding: 40px 50px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); text-align: center;">
+                
+                <div style="display: inline-block; padding: 6px 25px; border-radius: 50px; background: var(--secondary); color: white; text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 800; margin-bottom: 15px;">
+                    Asamblea Extraordinaria 2026
+                </div>
+
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 44px; color: white; font-weight: 900; margin-bottom: 30px; letter-spacing: 2px;">
+                    ORDEN DEL DÍA
+                </h2>
+
+                <div style="display: flex; flex-direction: column; gap: 14px; max-width: 950px; margin: 0 auto; text-align: left;">
+                    
+                    <!-- Punto 1 -->
+                    <div style="background: var(--white); padding: 18px 25px; border-radius: 18px; display: flex; align-items: center; gap: 20px; border-left: 8px solid var(--sky-blue); box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+                        <div style="background: var(--primary); color: var(--sky-blue); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0;">1</div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3;">
+                            Llamada a lista y verificación de Quórum
+                        </h4>
+                    </div>
+
+                    <!-- Punto 2 -->
+                    <div style="background: var(--white); padding: 18px 25px; border-radius: 18px; display: flex; align-items: center; gap: 20px; border-left: 8px solid var(--secondary); box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+                        <div style="background: var(--secondary); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0;">2</div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3;">
+                            Elección del presidente y secretario de la Asamblea Extraordinaria 2026
+                        </h4>
+                    </div>
+
+                    <!-- Punto 3 -->
+                    <div style="background: var(--white); padding: 18px 25px; border-radius: 18px; display: flex; align-items: center; gap: 20px; border-left: 8px solid var(--secondary); box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+                        <div style="background: var(--secondary); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0;">3</div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3;">
+                            Nombramiento de Comisión para la verificación de la redacción del acta
+                        </h4>
+                    </div>
+
+                    <!-- Punto 4 -->
+                    <div style="background: var(--white); padding: 18px 25px; border-radius: 18px; display: flex; align-items: center; gap: 20px; border-left: 8px solid var(--sky-blue); box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+                        <div style="background: var(--primary); color: var(--sky-blue); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0;">4</div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3;">
+                            Elección del Consejo de Administración 2026 – 2027
+                        </h4>
+                    </div>
+
+                    <!-- Punto 5 -->
+                    <div style="background: var(--white); padding: 18px 25px; border-radius: 18px; display: flex; align-items: center; gap: 20px; border-left: 8px solid var(--secondary); box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+                        <div style="background: var(--secondary); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; flex-shrink: 0;">5</div>
+                        <h4 style="font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3;">
+                            Elección del Comité de Convivencia 2026 – 2027
+                        </h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 </body>
 </html>
